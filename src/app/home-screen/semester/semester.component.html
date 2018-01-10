@@ -1,0 +1,13 @@
+<div class="semester">
+  <div class="header">
+      {{ semester.session }}
+      {{ semester.year }}
+  </div>
+  <div class="body">
+    Hours: {{ semester.hours }}
+    <div class="courses">
+      Courses:
+      <div class="course" *ngFor="let course of semester.courses"> {{ course.name }}</div>
+    </div>
+  </div>
+</div>
