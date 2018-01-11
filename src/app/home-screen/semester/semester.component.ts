@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Semester } from 'app/models/semester.model';
+import { RouterModule, Routes } from '@angular/router';
 
 @Component({
   selector: 'gt-semester',

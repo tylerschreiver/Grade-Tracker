@@ -1,3 +1,6 @@
-<div>
-  <gt-semester *ngFor="let semester of semesters" [semester]="semester"></gt-semester>
+<div class="menu">
+  <gt-semester *ngFor="let semester of semesters" 
+               [semester]="semester" 
+               (click)="navigateToSemesterDetail()">
+  </gt-semester>
 </div> 

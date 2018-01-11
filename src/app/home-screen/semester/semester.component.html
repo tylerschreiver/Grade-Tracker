@@ -7,7 +7,10 @@
     Hours: {{ semester.hours }}
     <div class="courses">
       Courses:
-      <div class="course" *ngFor="let course of semester.courses"> {{ course.name }}</div>
+      <div class="course" *ngFor="let course of semester.courses"> 
+        <span>{{ course.name }}</span>
+        <span style="float:right">{{ course.gpa }}</span>
+      </div>
     </div>
   </div>
 </div>

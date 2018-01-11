@@ -1,24 +1,26 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { HomeScreenComponent } from './home-screen/home-screen.component';
 import { GradeReceiverService } from './services/grade-receiver.service';
 import { SemesterComponent } from './home-screen/semester/semester.component';
-
+import { appRoutes } from './app-routing.module';
+import { RouterModule } from '@angular/router';
+import { SemesterDetailComponent } from './semester-detail/semester-detail.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeScreenComponent,
-    SemesterComponent
+    SemesterComponent,
+    SemesterDetailComponent
   ],
   imports: [
     BrowserModule,
-    FormsModule,
-    HttpModule
+    HttpClientModule,
+    RouterModule.forRoot(appRoutes)
   ],
   providers: [GradeReceiverService],
   bootstrap: [AppComponent]

@@ -6,6 +6,12 @@
     background-color: rebeccapurple;
     border: 1px solid black;
     border-radius: 5px;
+    cursor: pointer;
+    transition: box-shadow .3s;
+}
+
+.semester:hover { 
+    box-shadow: 0 0 11px rgba(33,33,33,.7); 
 }
 
 .header {

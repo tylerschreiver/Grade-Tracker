@@ -43,10 +43,15 @@ export class GradeReceiverService {
     let mock = new Semester({
       year: 2017,
       session: "fall",
-      courses: courses
+      courses: courses,
+      id: 1
     });
 
     return mock;
+  }
+
+  getSemesterById(id) {
+    return this.mockSemesterData();
   }
 
 }
