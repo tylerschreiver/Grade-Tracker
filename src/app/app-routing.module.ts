@@ -1,7 +1,7 @@
 import { Routes, RouterModule } from '@angular/router'
 import { AppComponent } from './app.component';
-import { HomeScreenComponent } from './home-screen/home-screen.component';
-import { SemesterDetailComponent } from './semester-detail/semester-detail.component';
+import { HomeScreenComponent } from './screens/home-screen/home-screen.component';
+import { SemesterDetailComponent } from './screens/semester-detail/semester-detail.component';
 import { NgModule } from '@angular/core/src/metadata/ng_module';
 
 export const appRoutes: Routes = [

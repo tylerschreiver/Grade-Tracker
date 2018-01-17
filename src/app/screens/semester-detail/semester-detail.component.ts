@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { GradeReceiverService } from '../services/grade-receiver.service';
-import { Semester } from '../models/semester.model';
+import { GradeReceiverService } from '../../services/grade-receiver.service';
+import { Semester } from '../../models/semester.model';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
