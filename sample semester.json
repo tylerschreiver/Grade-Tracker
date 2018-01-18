@@ -41,23 +41,23 @@
         [
           {
             "name": "Homework",
-            "weight": 100,
-            "numGrades": 2,
-            "grades":
-              [
-                {
-                  "name": "HW 1",
-                  "totalPoints": 150,
-                  "pointsEarned": 144
-                },
-                {
-                  "name": "HW 2",
-                  "totalPoints": 200,
-                  "pointsEarned": null
-                }
-              ]
-          }
-        ]
-		}
-	]
-}
+              "weight": 100,
+              "numGrades": 2,
+              "grades":
+                [
+                  {
+                    "name": "HW 1",
+                    "totalPoints": 150,
+                    "pointsEarned": 144
+                  },
+                  {
+                    "name": "HW 2",
+                    "totalPoints": 200,
+                    "pointsEarned": null
+                  }
+                ]
+            }
+          ]
+      }
+    ]
+  }
