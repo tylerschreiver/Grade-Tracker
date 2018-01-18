@@ -1,0 +1,11 @@
+.buttons {
+    float: right;
+}
+
+.fa-chevron-down {
+    margin-left: 10px;
+}
+
+.fa {
+    cursor: pointer;
+}

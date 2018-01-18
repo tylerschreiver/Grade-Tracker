@@ -2,7 +2,7 @@
 export class Grade {
     name: string;
     totalPoints: number;
-    pointsEarned: any; 
+    pointsEarned: any;
     
     constructor(json: any) {
         if (json.name) this.name = json.name;

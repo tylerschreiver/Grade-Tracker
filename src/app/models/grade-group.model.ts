@@ -30,7 +30,7 @@ export class GradeGroup {
 
     pointsTowardsTotal() {
         let avg = this.average();
-        if (avg === null) return null
+        if (avg === null) return null;
         else return avg * this.percentage;
     }
 }
