@@ -2,7 +2,7 @@
 export class Grade {
     name: string;
     totalPoints: number;
-    pointsEarned: number;
+    pointsEarned: number; // null signifies that the assignment is incomplete and is not counted in grade calculation
 
     constructor(json: any) {
         if (json.name) this.name = json.name;
