@@ -2,13 +2,13 @@ import { Grade } from './grade.model';
 
 export class GradeGroup {
     name: string;
-    percentage: number;
+    weight: number;
     numGrades: number;
     grades: Grade[];
 
     constructor(json: any) {
   		if (json.name) this.name = json.name;
-  		if (json.percentage) this.percentage = json.percentage;
+  		if (json.weight) this.weight = json.weight;
     	if (json.numGrades) this.numGrades = json.numGrades;
         if (json.grades) this.grades = json.grades;
     }
@@ -31,6 +31,6 @@ export class GradeGroup {
     pointsTowardsTotal() {
         let avg = this.average();
         if (avg === null) return null;
-        else return avg * this.percentage;
+        else return avg * this.weight;
     }
 }

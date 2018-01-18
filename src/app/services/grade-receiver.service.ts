@@ -28,7 +28,7 @@ export class GradeReceiverService {
     let gradeGroup1, gradeGroup2, gradeGroup3, gradeGroup4: GradeGroup;
     gradeGroup1 = gradeGroup2 = gradeGroup3 = gradeGroup4 = new GradeGroup({
       name: "tests",
-      percentage: 25,
+      weight: 25,
       numGrades: 3,
       grades: grades
     })

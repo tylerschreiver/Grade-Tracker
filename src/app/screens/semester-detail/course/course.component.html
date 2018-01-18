@@ -1,11 +1,26 @@
 <div class="course-wrapper">
-  <div class="row">
     <div class="col-4">{{ course.name }}</div>
     <div class="col-3">{{ course.averageInCourse()*100 }}%</div>
     <div class="col-1">{{ course.hours }}</div>
     <span class="buttons">
       <i class="fa fa-pencil"></i>
-      <i class="fa fa-chevron-down"></i>        
+      <i *ngIf="!isExpanded" (click)="isExpanded = true" class="fa fa-chevron-down"></i>        
+      <i *ngIf="isExpanded" (click)="isExpanded = false" class="fa fa-chevron-up"></i>              
+    </span>
+</div>
+<div *ngIf="isExpanded" class="grade-groups">
+  <div class="heading">
+    <div class="col-4 spacer">Name</div>
+    <div class="col-2">Weight</div>
+    <div class="col-2">Average Grade</div>
+  </div>
+  <div *ngFor="let group of course.gradeGroups">
+    <div class="col-4 spacer">{{ group.name }}</div>
+    <div class="col-2">{{ group.weight }}</div>
+    <div class="col-2">{{ group.average() }}</div>
+    <span class="buttons">
+      <i class="fa fa-plus"></i>
+      <i class="fa fa-chevron-down submenu"></i>      
     </span>
   </div>
 </div>
