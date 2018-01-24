@@ -3,11 +3,37 @@ import { Semester } from '../models/semester.model';
 import { Course } from '../models/course.model';
 import { GradeGroup } from '../models/grade-group.model';
 import { Grade } from '../models/grade.model';
+import { sampleJson } from '../../../sample semester';
 
 @Injectable()
 export class GradeReceiverService {
 
-  constructor() { }
+  constructor() {
+    console.log(this.createSemesterObject(sampleJson))
+  }
+
+  createSemesterObject(semester: Semester) {
+    let courses = [];
+    semester.courses.forEach((course) => {
+      let groups = [];
+      course.gradeGroups.forEach((group) => {
+        let grades = [];
+        group.grades.forEach((grade) => {
+          grade = new Grade(grade);
+          grades.push(grade);
+        }); // end grades loop;
+        group.grades = grades;
+        group = new GradeGroup(group);
+        groups.push(group);
+      }); // end GradeGroup loop
+      course.gradeGroups = groups;
+      course = new Course(course);
+      courses.push(course);
+    }); // end Courses loop
+    semester.courses = courses;
+    let newSemester = new Semester(semester);
+    return newSemester;
+  }
 
   mockSemesterData() {
     let grade1, grade2, grade3: Grade;
