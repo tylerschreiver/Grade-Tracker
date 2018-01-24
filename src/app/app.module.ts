@@ -10,6 +10,7 @@ import { appRoutes } from './app-routing.module';
 import { RouterModule } from '@angular/router';
 import { SemesterDetailComponent } from './screens/semester-detail/semester-detail.component';
 import { CourseComponent } from './screens/semester-detail/course/course.component';
+import { GradeGroupComponent } from './screens/semester-detail/grade-group/grade-group.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { CourseComponent } from './screens/semester-detail/course/course.compone
     HomeScreenComponent,
     SemesterComponent,
     SemesterDetailComponent,
-    CourseComponent
+    CourseComponent,
+    GradeGroupComponent
   ],
   imports: [
     BrowserModule,

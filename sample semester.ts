@@ -1,8 +1,8 @@
 export let sampleJson: any = {
 	"year": 2017,
-    "session": "Spring",
-    "id": 1,
-	"courses": 
+  "session": "Spring",
+  "id": 1,
+	"courses":
 	[
 		{
 			"name": "CECS 150",

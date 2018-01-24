@@ -7,9 +7,9 @@ import { Course } from '../../../models/course.model';
   styleUrls: ['./course.component.css']
 })
 export class CourseComponent implements OnInit {
-
+  isExpanded: Boolean = false;
+  @Input() course: Course;
   constructor() { }
-  @Input() course: Course; 
 
   ngOnInit() {
   }

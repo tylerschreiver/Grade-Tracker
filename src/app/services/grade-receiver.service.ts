@@ -9,6 +9,7 @@ import { sampleJson } from '../../../sample semester';
 export class GradeReceiverService {
 
   constructor() {
+    console.log(this.createSemesterObject(sampleJson))
   }
 
   createSemesterObject(semester: Semester) {
@@ -37,13 +38,13 @@ export class GradeReceiverService {
   mockSemesterData() {
     let grade1, grade2, grade3: Grade;
     grade1 = grade2 = grade3 = new Grade({
-      name: "grade",
+      name: 'grade',
       totalPoints: 100,
       pointsEarned: 69
     });
 
     grade3 = new Grade({
-      name: "grade",
+      name: 'grade',
       totalPoints: 100,
       pointsEarned: null
     });
@@ -51,8 +52,29 @@ export class GradeReceiverService {
     let grades = [grade1, grade2, grade3];
 
     let gradeGroup1, gradeGroup2, gradeGroup3, gradeGroup4: GradeGroup;
-    gradeGroup1 = gradeGroup2 = gradeGroup3 = gradeGroup4 = new GradeGroup({
-      name: "tests",
+    gradeGroup1 = new GradeGroup({
+      name: 'tests',
+      weight: 25,
+      numGrades: 3,
+      grades: grades
+    });
+
+    gradeGroup2 = new GradeGroup({
+      name: 'projects',
+      weight: 25,
+      numGrades: 3,
+      grades: grades
+    });
+
+    gradeGroup3 = new GradeGroup({
+      name: 'homework',
+      weight: 25,
+      numGrades: 3,
+      grades: grades
+    });
+
+    gradeGroup4 = new GradeGroup({
+      name: 'quizzes',
       weight: 25,
       numGrades: 3,
       grades: grades
@@ -62,7 +84,7 @@ export class GradeReceiverService {
 
     let course1, course2, course3: Course;
     course1 = course3 = new Course({
-      name: "CECS 100",
+      name: 'CECS 100',
       hours: 5,
       scaleType: 'letter',
       gradeScale: [60, 70, 80, 90],
@@ -70,7 +92,7 @@ export class GradeReceiverService {
     });
 
     course2 = new Course({
-      name: "CECS 110",
+      name: 'CECS 110',
       hours: 5,
       scaleType: 'plus',
       gradeScale: [60, 67, 70, 77, 80, 87, 90, 97],
@@ -78,7 +100,7 @@ export class GradeReceiverService {
     });
 
     course3 = new Course({
-      name: "CECS 120",
+      name: 'CECS 120',
       hours: 5,
       scaleType: 'plusMinus',
       gradeScale: [60, 63, 67, 70, 73, 77, 80, 83, 87, 90, 93, 97],
@@ -89,7 +111,7 @@ export class GradeReceiverService {
 
     let mock = new Semester({
       year: 2017,
-      session: "Fall",
+      session: 'Fall',
       courses: courses,
       id: 1
     });
