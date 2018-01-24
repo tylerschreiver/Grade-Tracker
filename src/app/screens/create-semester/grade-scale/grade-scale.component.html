@@ -1,0 +1,62 @@
+
+<div class="help-text"  >Enter the minimum percent to earn each respective grade</div>
+<div *ngIf="type == 'letter'">
+  <div>
+    <span class="letter">A</span>    <input (blur)="changeScale(3, $event.target.value)" type="number">
+    <span class="letter">B</span>    <input (blur)="changeScale(2, $event.target.value)" type="number">
+    <span class="letter">C</span>    <input (blur)="changeScale(1, $event.target.value)" type="number">
+    <span class="letter">D</span>    <input (blur)="changeScale(0, $event.target.value)" type="number">
+  </div>
+</div>
+<div *ngIf="type == 'plus'">
+    <div class="section two">
+      <span class="letter">A</span>    <input (blur)="changeScale(7, $event.target.value)"type="number">
+      <span class="letter">A+</span>   <input (blur)="changeScale(6, $event.target.value)" type="number">
+    </div>
+    <div class="section two">
+      <span class="letter">B</span>    <input (blur)="changeScale(5, $event.target.value)" type="number">
+      <span class="letter">B+</span>   <input (blur)="changeScale(4, $event.target.value)" type="number">
+    </div>
+
+    <div class="section two">
+      <span class="letter">C</span>    <input (blur)="changeScale(3, $event.target.value)" type="number">
+      <span class="letter">C+</span>   <input (blur)="changeScale(2, $event.target.value)" type="number">
+    </div>
+
+    <div class="section two">
+      <span class="letter">D</span>    <input (blur)="changeScale(1, $event.target.value)" type="number">
+      <span class="letter">D+</span>   <input (blur)="changeScale(0, $event.target.value)" type="number">
+    </div>
+
+</div>
+<div *ngIf="type == 'plusMinus'">
+    <div class="section three">
+      <span class="letter">A-</span>   <input (blur)="changeScale(11, $event.target.value)" type="number">
+      <span class="letter">A</span>    <input (blur)="changeScale(10, $event.target.value)" type="number">
+      <span class="letter">A+</span>   <input (blur)="changeScale(9, $event.target.value)" type="number">
+    </div>
+
+    <div class="section three">
+      <span class="letter">B-</span>   <input (blur)="changeScale(8, $event.target.value)" type="number">
+      <span class="letter">B</span>    <input (blur)="changeScale(7, $event.target.value)" type="number">
+      <span class="letter">B+</span>   <input (blur)="changeScale(6, $event.target.value)" type="number">
+    </div>
+
+    <div class="section three">
+      <span class="letter">C-</span>   <input (blur)="changeScale(5, $event.target.value)" type="number">
+      <span class="letter">C</span>    <input (blur)="changeScale(4, $event.target.value)" type="number">
+      <span class="letter">C+</span>   <input (blur)="changeScale(3, $event.target.value)" type="number">
+    </div>
+
+    <div class="section three">
+      <span class="letter">D-</span>   <input (blur)="changeScale(2, $event.target.value)" type="number">
+      <span class="letter">D</span>    <input (blur)="changeScale(1, $event.target.value)" type="number">
+      <span class="letter">D+</span>   <input (blur)="changeScale(0, $event.target.value)" type="number">
+    </div>
+
+</div>
+<div style="height:30px">
+  <button (click)="confirmScale()" class="btn confirm">Confirm Scale</button>
+</div>
+
+

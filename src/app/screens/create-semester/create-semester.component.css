@@ -1,0 +1,37 @@
+.menu {
+  background-color: #292929;
+  width: 80%;
+  margin-left: 15px;
+  border-radius: 5px;
+  margin-top: 20px;
+  min-height: 200px;
+  padding: 10px;
+}
+
+label {
+  color: white;
+  font-size: 20px;
+}
+
+h1 {
+  color: rebeccapurple;
+  -webkit-text-stroke: .4px white;
+  margin-left: 15px;
+  font-size: 40px;
+}
+
+.btn {
+  margin-top: 20px;
+}
+
+.course-creator {
+  background-color: rebeccapurple;
+  border: 1px solid white;
+  border-radius: 5px;
+  margin-top: 20px;
+  padding: 10px;
+}
+
+.scale {
+  margin-top: 10px;
+}

@@ -11,6 +11,9 @@ import { RouterModule } from '@angular/router';
 import { SemesterDetailComponent } from './screens/semester-detail/semester-detail.component';
 import { CourseComponent } from './screens/semester-detail/course/course.component';
 import { GradeGroupComponent } from './screens/semester-detail/grade-group/grade-group.component';
+import { CreateSemesterComponent } from './screens/create-semester/create-semester.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { GradeScaleComponent } from './screens/create-semester/grade-scale/grade-scale.component';
 
 @NgModule({
   declarations: [
@@ -19,10 +22,13 @@ import { GradeGroupComponent } from './screens/semester-detail/grade-group/grade
     SemesterComponent,
     SemesterDetailComponent,
     CourseComponent,
-    GradeGroupComponent
+    GradeGroupComponent,
+    CreateSemesterComponent,
+    GradeScaleComponent
   ],
   imports: [
     BrowserModule,
+    ReactiveFormsModule,
     HttpClientModule,
     RouterModule.forRoot(appRoutes)
   ],

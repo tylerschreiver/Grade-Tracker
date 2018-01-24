@@ -1,0 +1,36 @@
+input {
+  display: inline-block;
+  margin-right: 15px;
+  margin-left: 5px;
+}
+
+.section {
+  margin:auto;
+  margin-bottom: 10px;
+}
+
+.three {
+  width: 707px;
+}
+
+.two {
+  width: 470px;
+}
+
+.help-text {
+    margin: auto;
+    width: 370px;
+    display: block;
+    font-style: italic;
+    margin-bottom: 10px;
+}
+
+.confirm {
+  float: right;
+
+}
+
+.letter {
+  width: 22px;
+  display: inline-block;
+}

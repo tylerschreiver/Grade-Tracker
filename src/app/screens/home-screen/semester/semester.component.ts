@@ -8,9 +8,9 @@ import { RouterModule, Routes } from '@angular/router';
   styleUrls: ['./semester.component.css']
 })
 export class SemesterComponent implements OnInit {
+  @Input() semester: Semester;
 
   constructor() { }
-  @Input() semester: Semester;
 
 
   ngOnInit() {
