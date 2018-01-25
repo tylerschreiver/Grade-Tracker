@@ -15,6 +15,7 @@ import { RouterModule } from '@angular/router';
 import { SemesterDetailComponent } from './screens/semester-detail/semester-detail.component';
 import { CourseComponent } from './screens/semester-detail/course/course.component';
 import { GradeGroupComponent } from './screens/semester-detail/grade-group/grade-group.component';
+import { environment } from 'environments/environment';
 
 @NgModule({
   declarations: [
