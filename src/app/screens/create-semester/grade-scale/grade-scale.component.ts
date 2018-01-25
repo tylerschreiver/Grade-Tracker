@@ -11,6 +11,8 @@ export class GradeScaleComponent implements OnInit {
   plusMinus = [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1];
   plus = [-1, -1, -1, -1, -1, -1, -1, -1];
   letter = [-1, -1, -1, -1];
+  letterChar = ['D', 'C', 'B', 'A'];
+  isEditing = true;
 
   constructor(public el: ElementRef) { }
 
@@ -31,17 +33,14 @@ export class GradeScaleComponent implements OnInit {
     }
   }
 
-  confirmScale() {
+  get confirmScale() {
     switch(this.type) {
       case 'letter':
-        console.log(this.letter);
-        break;
+        return this.letter.filter((grade) => (grade < 0 || grade > 100) ).length > 0;
       case 'plus':
-        console.log(this.plus);
-        break;
+        return this.plus.filter((grade) => (grade < 0 || grade > 100) ).length > 0;
       case 'plusMinus':
-        console.log(this.plusMinus);
-        break;
+        return this.plusMinus.filter((grade) => (grade < 0 || grade > 100) ).length > 0;
     }
   }
 

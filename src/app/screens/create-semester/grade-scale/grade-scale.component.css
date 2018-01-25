@@ -5,16 +5,9 @@ input {
 }
 
 .section {
-  margin:auto;
+  margin: auto;
   margin-bottom: 10px;
-}
-
-.three {
-  width: 707px;
-}
-
-.two {
-  width: 470px;
+  display: inline-block;
 }
 
 .help-text {
@@ -27,10 +20,46 @@ input {
 
 .confirm {
   float: right;
+}
 
+.outer {
+  text-align: center;
 }
 
 .letter {
   width: 22px;
   display: inline-block;
+}
+
+.finished-scale {
+  width: 95%;
+  background-color: #B8B8B8;
+  border-radius: 5px;
+  display: table;
+}
+
+.finished-letter-4{
+  width: 25%;
+  display: inline-block;
+  text-align: center;
+}
+
+.scale {
+  width: 94%;
+  display: table-cell;
+  
+}
+
+.edit {
+  width: 5%;
+  display: table-cell;
+  height: 100%;
+  vertical-align: middle;
+  padding: 0;
+}
+
+.fa-pencil {
+  cursor: pointer;
+  font-size:18px;
+  padding: 4px;
 }
