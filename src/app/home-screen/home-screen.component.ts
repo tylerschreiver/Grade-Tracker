@@ -12,7 +12,7 @@ export class HomeScreenComponent {
   semesters: Semester[] = [];
   constructor(public GradeReceiver: GradeReceiverService,
               public router: Router) {
-    for(let i=0; i<6; i++) this.semesters.push(GradeReceiver.mockSemesterData()); 
+    for(let i=0; i<6; i++) this.semesters.push(GradeReceiver.getSemesterById(i)); 
   }
 
   navigateToSemesterDetail(id?) {

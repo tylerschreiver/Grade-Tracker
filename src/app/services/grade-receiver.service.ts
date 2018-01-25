@@ -3,12 +3,17 @@ import { Semester } from '../models/semester.model';
 import { Course } from '../models/course.model';
 import { GradeGroup } from '../models/grade-group.model';
 import { Grade } from '../models/grade.model';
+import { Observable } from 'rxjs/Observable';
+import { AngularFireDatabase } from 'angularfire2/database';
+import { OnInit } from '@angular/core/src/metadata/lifecycle_hooks';
 
 @Injectable()
-export class GradeReceiverService {
-
-  constructor() { }
-
+export class GradeReceiverService implements OnInit{
+  semesters: Observable<Semester[]>;
+  constructor(private db: AngularFireDatabase) { }
+  ngOnInit() {
+    this.semesters = this.getSemesters('/semesters');
+  }
   mockSemesterData() {
     let grade1, grade2, grade3: Grade;
     grade1 = grade2 = grade3 = new Grade({
@@ -51,7 +56,12 @@ export class GradeReceiverService {
   }
 
   getSemesterById(id) {
+    //return this.semesters[id];
     return this.mockSemesterData();
+  }
+
+  getSemesters(path): Observable<Semester[]> {
+    return this.db.list<Semester>(path).valueChanges();
   }
 
 }

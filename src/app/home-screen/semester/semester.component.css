@@ -8,6 +8,7 @@
     border-radius: 5px;
     cursor: pointer;
     transition: box-shadow .3s;
+    color: greenyellow;
 }
 
 .semester:hover { 
