@@ -1,6 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFireAuthModule } from 'angularfire2/auth';
 
 import { AppComponent } from './app.component';
 import { HomeScreenComponent } from './home-screen/home-screen.component';
@@ -9,6 +12,7 @@ import { SemesterComponent } from './home-screen/semester/semester.component';
 import { appRoutes } from './app-routing.module';
 import { RouterModule } from '@angular/router';
 import { SemesterDetailComponent } from './semester-detail/semester-detail.component';
+import { environment } from 'environments/environment';
 
 @NgModule({
   declarations: [
@@ -20,7 +24,10 @@ import { SemesterDetailComponent } from './semester-detail/semester-detail.compo
   imports: [
     BrowserModule,
     HttpClientModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireDatabaseModule,
+    AngularFireAuthModule
   ],
   providers: [GradeReceiverService],
   bootstrap: [AppComponent]
