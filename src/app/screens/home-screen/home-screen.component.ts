@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { GradeReceiverService } from '../services/grade-receiver.service';
-import { Semester } from '../models/semester.model';
+import { GradeReceiverService } from '../../services/grade-receiver.service';
+import { Semester } from '../../models/semester.model';
 import { Router } from '@angular/router';
 
 @Component({
@@ -12,7 +12,7 @@ export class HomeScreenComponent {
   semesters: Semester[] = [];
   constructor(public GradeReceiver: GradeReceiverService,
               public router: Router) {
-    for(let i=0; i<6; i++) this.semesters.push(GradeReceiver.mockSemesterData()); 
+    for(let i=0; i<6; i++)  this.semesters.push(GradeReceiver.mockSemesterData()); 
   }
 
   navigateToSemesterDetail(id?) {
