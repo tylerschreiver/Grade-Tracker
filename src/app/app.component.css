@@ -1,7 +1,6 @@
 .page {
     border-radius: 5px;
     padding: 0px 15px;
-    cursor: pointer;
 }
 
 .title {
@@ -14,4 +13,5 @@
     -webkit-text-stroke: 1px black;
     font-size: 40px;
     font-family: impact;
+    cursor: pointer;
 }
