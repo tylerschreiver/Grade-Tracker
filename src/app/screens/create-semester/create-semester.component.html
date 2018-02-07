@@ -42,7 +42,10 @@
           </div>
         </div>
         <div *ngIf="newCourseForm.controls['scaleType'].value !== ''" class="row scale">
-          <gt-grade-scale [type]="newCourseForm.controls['scaleType'].value"></gt-grade-scale>
+          <gt-grade-scale [type]="newCourseForm.controls['scaleType'].value" (complete)="scaleFinished($event)"></gt-grade-scale>
+        </div>
+        <div *ngIf="isScaleDone" class="row">
+          <gt-create-grade-group></gt-create-grade-group>
         </div>
       </div>
 

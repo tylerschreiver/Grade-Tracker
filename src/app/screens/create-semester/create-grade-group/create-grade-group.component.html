@@ -1,0 +1,22 @@
+<div class="menu">
+  <h1>Create Grade Group</h1>
+  <form [formGroup]="gradeGroupForm">
+    <div class="form-group">
+      <div class="pair">
+        <label>Grade Group Name</label>
+        <input formControlName="name">
+      </div>
+      <div class="pair">
+        <label>Weight</label>
+        <input type="number" formControlName="weight">
+      </div>
+      <div class="pair">
+        <label>Num Grades <i>(optional)</i></label>
+        <input type="number" formControlName="numGrades">
+      </div>
+    </div>
+    <div class="footer">
+      <button [disabled]="!gradeGroupForm.valid" (click)="confirm()" class="btn right">Confirm Grade Group</button>
+    </div>
+  </form>
+</div>

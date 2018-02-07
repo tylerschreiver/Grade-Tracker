@@ -10,7 +10,7 @@ export class GradeGroup {
   		if (json.name) this.name = json.name;
   		if (json.weight) this.weight = json.weight;
     	if (json.numGrades) this.numGrades = json.numGrades;
-        if (json.grades) this.grades = json.grades;
+      if (json.grades) this.grades = json.grades;
     }
 
     average() {

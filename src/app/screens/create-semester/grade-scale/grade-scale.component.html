@@ -2,66 +2,73 @@
 <div *ngIf="isEditing">
     <div class="help-text"  >Enter the minimum percent to earn each respective grade</div>
     <div class="outer" *ngIf="type == 'letter'">
-      <div class="section">
-        <span class="letter">A</span>    <input (input)="changeScale(3, $event.target.value)" type="number">
-        <span class="letter">B</span>    <input (input)="changeScale(2, $event.target.value)" type="number">
-      </div>
-      <div class="section">
-      <span class="letter">C</span>    <input (input)="changeScale(1, $event.target.value)" type="number">
-      <span class="letter">D</span>    <input (input)="changeScale(0, $event.target.value)" type="number">
-      </div>
-  
+      <form [formGroup]="letterForm">
+        <div class="section form-group">
+          <span class="letter">A</span>    <input formControlName="a" type="number">
+          <span class="letter">B</span>    <input formControlName="b" type="number">
+        </div>
+        <div class="section">
+          <span class="letter">C</span>    <input formControlName="c" type="number">
+          <span class="letter">D</span>    <input formControlName="d" type="number">
+        </div>
+      </form>
+
+
     </div>
     <div class="outer" *ngIf="type == 'plus'">
-        <div class="section">
-          <span class="letter">A</span>    <input (input)="changeScale(7, $event.target.value)"type="number">
-          <span class="letter">A+</span>   <input (input)="changeScale(6, $event.target.value)" type="number">
-        </div>
-        <div class="section">
-          <span class="letter">B</span>    <input (input)="changeScale(5, $event.target.value)" type="number">
-          <span class="letter">B+</span>   <input (input)="changeScale(4, $event.target.value)" type="number">
-        </div>
-  
-        <div class="section">
-          <span class="letter">C</span>    <input (input)="changeScale(3, $event.target.value)" type="number">
-          <span class="letter">C+</span>   <input (input)="changeScale(2, $event.target.value)" type="number">
-        </div>
-  
-        <div class="section">
-          <span class="letter">D</span>    <input (input)="changeScale(1, $event.target.value)" type="number">
-          <span class="letter">D+</span>   <input (input)="changeScale(0, $event.target.value)" type="number">
-        </div>
-  
+        <form [formGroup]="plusForm">
+          <div class="section">
+            <span class="letter">A</span>    <input formControlName="a" type="number">
+            <span class="letter">A+</span>   <input formControlName="aPlus" type="number">
+          </div>
+          <div class="section">
+            <span class="letter">B</span>    <input formControlName="b" type="number">
+            <span class="letter">B+</span>   <input formControlName="bPlus" type="number">
+          </div>
+
+          <div class="section">
+            <span class="letter">C</span>    <input formControlName="c" type="number">
+            <span class="letter">C+</span>   <input formControlName="cPlus" type="number">
+          </div>
+
+          <div class="section">
+            <span class="letter">D</span>    <input formControlName="d" type="number">
+            <span class="letter">D+</span>   <input formControlName="dPlus" type="number">
+          </div>
+        </form>
+
+
     </div>
     <div class="outer" *ngIf="type == 'plusMinus'">
+      <form [formGroup]="plusMinusForm">
         <div class="section">
-          <span class="letter">A-</span>   <input (input)="changeScale(11, $event.target.value)" type="number">
-          <span class="letter">A</span>    <input (input)="changeScale(10, $event.target.value)" type="number">
-          <span class="letter">A+</span>   <input (input)="changeScale(9, $event.target.value)" type="number">
+          <span class="letter">A-</span>   <input formControlName="aMinus" type="number">
+          <span class="letter">A</span>    <input formControlName="a" type="number">
+          <span class="letter">A+</span>   <input formControlName="aPlus" type="number">
         </div>
-  
+
         <div class="section">
-          <span class="letter">B-</span>   <input (input)="changeScale(8, $event.target.value)" type="number">
-          <span class="letter">B</span>    <input (input)="changeScale(7, $event.target.value)" type="number">
-          <span class="letter">B+</span>   <input (input)="changeScale(6, $event.target.value)" type="number">
+          <span class="letter">B-</span>   <input formControlName="bMinus" type="number">
+          <span class="letter">B</span>    <input formControlName="b" type="number">
+          <span class="letter">B+</span>   <input formControlName="bPlus" type="number">
         </div>
-  
+
         <div class="section">
-          <span class="letter">C-</span>   <input (input)="changeScale(5, $event.target.value)" type="number">
-          <span class="letter">C</span>    <input (input)="changeScale(4, $event.target.value)" type="number">
-          <span class="letter">C+</span>   <input (input)="changeScale(3, $event.target.value)" type="number">
+          <span class="letter">C-</span>   <input formControlName="cMinus" type="number">
+          <span class="letter">C</span>    <input formControlName="c" type="number">
+          <span class="letter">C+</span>   <input formControlName="cPlus" type="number">
         </div>
-  
+
         <div class="section">
-          <span class="letter">D-</span>   <input (input)="changeScale(2, $event.target.value)" type="number">
-          <span class="letter">D</span>    <input (input)="changeScale(1, $event.target.value)" type="number">
-          <span class="letter">D+</span>   <input (input)="changeScale(0, $event.target.value)" type="number">
+          <span class="letter">D-</span>   <input formControlName="dMinus" type="number">
+          <span class="letter">D</span>    <input formControlName="d" type="number">
+          <span class="letter">D+</span>   <input formControlName="dPlus" type="number">
         </div>
-  
+      </form>
     </div>
     <div style="height:30px">
-      <button [disabled]="confirmScale" (click)="isEditing = false" class="btn confirm">Confirm Scale</button>
-    </div>  
+      <button [disabled]="false" (click)="confirm()" class="btn confirm">Confirm Scale</button>
+    </div>
 </div>
 
 <div class="finished-scale" *ngIf="!isEditing">
@@ -74,10 +81,20 @@
     </div>
   </div>
   <div class="scale" *ngIf="type == 'plus'">
-    Plus
+    <div class="letters">
+      <span *ngFor="let letter of plusChar" class="finished-letter-8">{{ letter }}</span>
+    </div>
+    <div class="numbers">
+      <span class="finished-letter-8" *ngFor="let num of plus">{{ num }}</span>
+    </div>
   </div>
   <div class="scale" *ngIf="type == 'plusMinus'">
-    PlusMinus
+    <div class="letters">
+      <span *ngFor="let letter of plusMinusChar" class="finished-letter-12">{{ letter }}</span>
+    </div>
+    <div class="numbers">
+      <span class="finished-letter-12" *ngFor="let num of plusMinus">{{ num }}</span>
+    </div>
   </div>
   <div class="edit">
     <i (click)="isEditing = true;" class="fa fa-pencil"></i>

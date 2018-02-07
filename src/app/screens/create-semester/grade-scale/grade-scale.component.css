@@ -7,7 +7,7 @@ input {
 .section {
   margin: auto;
   margin-bottom: 10px;
-  display: inline-block;
+  display: block;
 }
 
 .help-text {
@@ -31,6 +31,10 @@ input {
   display: inline-block;
 }
 
+.letters {
+  border-bottom: 1px solid black;
+}
+
 .finished-scale {
   width: 95%;
   background-color: #B8B8B8;
@@ -38,8 +42,23 @@ input {
   display: table;
 }
 
-.finished-letter-4{
+.finished-letter-4 {
   width: 25%;
+  display: inline-block;
+  padding: 2px 0px;
+  text-align: center;
+}
+
+.finished-letter-8 {
+  width: 12.5%;
+  padding: 2px 0px;
+  display: inline-block;
+  text-align: center;
+}
+
+.finished-letter-12 {
+  width: 8.3%;
+  padding: 2px 0px;
   display: inline-block;
   text-align: center;
 }
@@ -47,13 +66,15 @@ input {
 .scale {
   width: 94%;
   display: table-cell;
-  
+
 }
 
 .edit {
   width: 5%;
   display: table-cell;
   height: 100%;
+  text-align: center;
+  border-left: 1px solid black;
   vertical-align: middle;
   padding: 0;
 }

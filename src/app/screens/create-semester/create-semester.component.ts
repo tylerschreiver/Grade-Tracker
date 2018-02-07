@@ -11,6 +11,7 @@ export class CreateSemesterComponent implements OnInit {
   newCourseForm: FormGroup;
   yearsAvailable: number[] = [];
   creatingCourse: Boolean = false;
+  isScaleDone: Boolean = false;
 
   constructor(formBuilder: FormBuilder) {
     this.semesterForm = formBuilder.group({
@@ -35,6 +36,9 @@ export class CreateSemesterComponent implements OnInit {
     this.creatingCourse = true;
   }
 
-  log() { console.log(this.newCourseForm.value); }
+  scaleFinished(e) {
+    console.log(e);
+    this.isScaleDone = true;
+  }
 
 }
