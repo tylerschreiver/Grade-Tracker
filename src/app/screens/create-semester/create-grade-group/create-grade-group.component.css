@@ -6,16 +6,37 @@
 }
 
 input {
-  display: block;
+  display: inline;
   margin: auto;
 }
 
 .pair {
   display: inline-block;
   text-align: center;
-  width: 33%;
+  padding-left: 5px;
+  margin-bottom: 10px;
 }
 
+.pad-left {
+  padding-left: 10px;
+  text-align: center;
+}
+
+.hundo {
+  width: calc(100% - 36px);
+  margin: 0 10px;
+}
+
+.input-num {
+  min-width: 40px !important;
+  max-width: 100px !important;
+}
+
+.third {
+  width: 33%;
+  display: inline-block;
+  text-align: center;
+}
 
 h1 {
   margin: 0px;
@@ -30,3 +51,19 @@ h1 {
 .right {
   float: right;
 }
+
+.header {
+  BORDER: 1px solid black;
+  border-top-left-radius: 5px;
+  margin: 0 10px;
+  border-top-right-radius: 5px;
+}
+
+.form-group {
+  border-left: 1px solid black;
+  margin-left: 10px;
+  margin-right: 10px;
+  border-right: 1px solid black;
+  padding: 5px 0px;
+}
+

@@ -8,6 +8,8 @@ import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 })
 export class CreateGradeGroupComponent implements OnInit {
   gradeGroupForm: FormGroup;
+  numGradeGroups: number;
+  groups = [];
   constructor(public fb: FormBuilder) {
     this.gradeGroupForm = this.fb.group({
       name: ['', Validators.required],
@@ -18,5 +20,19 @@ export class CreateGradeGroupComponent implements OnInit {
 
   ngOnInit() {
   }
+
+  createGroups() {
+    if (this.groups.length > this.numGradeGroups) {
+      this.groups = this.groups.slice(0, this.numGradeGroups);
+    }
+    else {
+      let groupsToAdd = this.numGradeGroups - this.groups.length
+      for (let i = 0; i < groupsToAdd; i++) {
+        this.groups.push(this.gradeGroupForm);
+      }
+    }
+
+  }
+
 
 }

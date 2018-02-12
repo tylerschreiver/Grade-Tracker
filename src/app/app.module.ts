@@ -12,7 +12,7 @@ import { SemesterDetailComponent } from './screens/semester-detail/semester-deta
 import { CourseComponent } from './screens/semester-detail/course/course.component';
 import { GradeGroupComponent } from './screens/semester-detail/grade-group/grade-group.component';
 import { CreateSemesterComponent } from './screens/create-semester/create-semester.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { GradeScaleComponent } from './screens/create-semester/grade-scale/grade-scale.component';
 import { CreateGradeGroupComponent } from './screens/create-semester/create-grade-group/create-grade-group.component';
 
@@ -31,6 +31,7 @@ import { CreateGradeGroupComponent } from './screens/create-semester/create-grad
   imports: [
     BrowserModule,
     ReactiveFormsModule,
+    FormsModule,
     HttpClientModule,
     RouterModule.forRoot(appRoutes)
   ],

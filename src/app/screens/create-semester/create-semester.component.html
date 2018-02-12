@@ -24,17 +24,19 @@
         <div class="row">
           <div class="col-3">
             <label>Course Name</label>
-            <input formControlName="name">
-          </div>
-          <div class="col-3">
+            <input class="hundo" formControlName="name">
+          </div><!--
+       --><div class="col-1"></div><!--
+       --><div class="col-2">
             <label>Hours</label>
-            <select formControlName="hours" class="block">
+            <select formControlName="hours" class="block hundo">
               <option *ngFor="let num of [1,2,3,4,5]" value="num">{{ num }}</option>
             </select>
-          </div>
-          <div class="col-3">
+          </div><!--
+       --><div class="col-1"></div><!--
+       --><div class="col-3">
             <label>Scale Type</label>
-            <select formControlName="scaleType" class="block">
+            <select formControlName="scaleType" class="block hundo">
               <option value="letter">Letter (eg: 'A', 'B', 'C')</option>
               <option value="plusMinus">Plus Minus (eg: 'A+', 'A', 'A-')</option>
               <option value="plus">Plus (eg: 'A+', 'A', 'B+', 'B')</option>
