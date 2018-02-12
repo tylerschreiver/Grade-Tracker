@@ -4,7 +4,7 @@ import { GradeGroup } from '../../../models/grade-group.model';
 @Component({
   selector: 'gt-grade-group',
   templateUrl: './grade-group.component.html',
-  styleUrls: ['./grade-group.component.css']
+  styleUrls: ['./grade-group.component.scss']
 })
 
 export class GradeGroupComponent implements OnInit {

@@ -6,7 +6,7 @@ import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'gt-semester-detail',
   templateUrl: './semester-detail.component.html',
-  styleUrls: ['./semester-detail.component.css']
+  styleUrls: ['./semester-detail.component.scss']
 })
 export class SemesterDetailComponent {
   semester: Semester;
