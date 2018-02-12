@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'gt-home-screen', // gt for GradeTracker
   templateUrl: './home-screen.component.html',
-  styleUrls: ['./home-screen.component.css']
+  styleUrls: ['./home-screen.component.scss']
 })
 export class HomeScreenComponent {
   semesters: Semester[] = [];
