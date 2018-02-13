@@ -23,6 +23,7 @@ export class HomeScreenComponent {
     this.GradeReceiver.getSemesters().subscribe(data => {
       data.forEach((semester) => {
         this.semesters.push(new Semester(semester));
+        
       });
     }, error => this.errorMessage = <any> error);
   }
