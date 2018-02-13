@@ -17,7 +17,7 @@ export class SemesterDetailComponent {
               public route: ActivatedRoute) {
     route.params.forEach((param) => this.id = param['id']);
     this.GradeReceiver.getSemesterById(this.id).subscribe(data => {
-      this.semester = data;
+      this.semester = new Semester(data);
     }, error => this.errorMessage = <any> error);
   }
 

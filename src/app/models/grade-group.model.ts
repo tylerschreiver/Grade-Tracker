@@ -4,13 +4,17 @@ export class GradeGroup {
     name: string;
     weight: number;
     numGrades: number;
-    grades: Grade[];
+    grades: Grade[] = [];
 
     constructor(json: any) {
   		if (json.name) this.name = json.name;
   		if (json.weight) this.weight = json.weight;
     	if (json.numGrades) this.numGrades = json.numGrades;
-        if (json.grades) this.grades = json.grades;
+        if (json.grades) {
+            json.grades.forEach((grade) => {
+                this.grades.push(new Grade(grade));
+            });
+        }
     }
 
     average() {
@@ -23,11 +27,8 @@ export class GradeGroup {
                 totalPointsEarned += grade.pointsEarned;
                 totalPointsPossible += grade.totalPoints;
             });
-            console.log("average function\n");
-            console.log(totalPointsEarned/totalPointsPossible);
             return (totalPointsEarned/totalPointsPossible);
         }
-
     }
 
     pointsTowardsTotal() {
