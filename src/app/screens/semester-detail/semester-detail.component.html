@@ -4,7 +4,7 @@
     <div class="col-3 header-text">Current Grade</div>
     <div class="col-1 header-text">Hours</div>
   </div>
-  <div class="course-wrapper" *ngFor="let class of semester.courses">
-    <gt-course [course]="class"></gt-course>
+  <div class="course-wrapper" *ngFor="let course of semester.courses">
+    <gt-course [course]="course"></gt-course>
   </div>
 </div>

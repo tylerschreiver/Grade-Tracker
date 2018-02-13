@@ -23,6 +23,8 @@ export class GradeGroup {
                 totalPointsEarned += grade.pointsEarned;
                 totalPointsPossible += grade.totalPoints;
             });
+            console.log("average function\n");
+            console.log(totalPointsEarned/totalPointsPossible);
             return (totalPointsEarned/totalPointsPossible);
         }
 
