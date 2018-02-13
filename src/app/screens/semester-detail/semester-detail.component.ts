@@ -15,17 +15,11 @@ export class SemesterDetailComponent {
 
   constructor(public GradeReceiver: GradeReceiverService,
               public route: ActivatedRoute) {
-                route.params.forEach((param) => this.id = param['id']);
-
-                console.log("id\n");
-                console.log(this.id);
-                
-                this.GradeReceiver.getSemesterById(this.id).subscribe(data => {
-                  this.semester = data;
-                  console.log("Semester object\n");
-                  console.log(this.semester);
-                  }, error => this.errorMessage = <any> error);
-               }
+    route.params.forEach((param) => this.id = param['id']);
+    this.GradeReceiver.getSemesterById(this.id).subscribe(data => {
+      this.semester = data;
+    }, error => this.errorMessage = <any> error);
+  }
 
   // ngOnInit() {
   //   //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
