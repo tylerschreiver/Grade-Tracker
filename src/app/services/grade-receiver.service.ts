@@ -40,7 +40,7 @@ export class GradeReceiverService {
     grade1 = grade2 = grade3 = new Grade({
       name: 'grade',
       totalPoints: 100,
-      pointsEarned: 69
+      pointsEarned: 73
     });
 
     grade3 = new Grade({
