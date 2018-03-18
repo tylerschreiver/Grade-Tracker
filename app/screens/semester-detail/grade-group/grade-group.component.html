@@ -1,0 +1,22 @@
+<div *ngIf="group">
+  <div class="col-4 spacer">{{ group.name }}</div>
+  <div class="col-2">{{ group.weight }}</div>
+  <div class="col-2">{{ group.average() }}</div>
+  <span class="buttons">
+    <i class="fa fa-plus"></i>
+    <i *ngIf="!isExpanded" (click)="isExpanded = true" class="fa fa-chevron-down submenu"></i>
+    <i *ngIf="isExpanded" (click)="isExpanded = false" class="fa fa-chevron-up submenu"></i>
+  </span>
+  <div class="grades" *ngIf="isExpanded">
+    <div class="heading">
+      <div class="col-4 spacer">Name</div>
+      <div class="col-2">Points Earned</div>
+      <div class="col-2">Total Points</div>
+    </div>
+    <div  class="grade" *ngFor="let grade of group.grades">
+      <div class="col-4 spacer">{{ grade.name }}</div>
+      <div class="col-2">{{ grade.pointsEarned }}</div>
+      <div class="col-2">{{ grade.totalPoints }}</div>
+    </div>
+  </div>
+</div>
