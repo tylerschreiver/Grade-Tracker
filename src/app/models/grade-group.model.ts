@@ -10,12 +10,16 @@ export class GradeGroup {
   		if (json.name) this.name = json.name;
   		if (json.weight) this.weight = json.weight;
     	if (json.numGrades) this.numGrades = json.numGrades;
-        if (json.grades) this.grades = json.grades;
         if (json.numGrades && (!json.grades || !json.grades.length)) {
             for (let i = 0; i < json.numGrades; i++) {
                 this.grades.push(new Grade({name: json.name, totalPoints: 100}));
             }
         } 
+        if (json.grades) {
+            json.grades.forEach((grade) => {
+                this.grades.push(new Grade(grade));
+            });
+        }
     }
 
     average() {
@@ -30,7 +34,6 @@ export class GradeGroup {
             });
             return (totalPointsEarned/totalPointsPossible);
         }
-
     }
 
     pointsTowardsTotal() {

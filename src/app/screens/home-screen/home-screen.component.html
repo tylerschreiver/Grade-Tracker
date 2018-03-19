@@ -2,8 +2,9 @@
   <button (click)="navigateToCreateSemester()" class="btn create">New Semester</button>
 </div>
 <div class="menu">
-  <gt-semester *ngFor="let semester of semesters"
-               [semester]="semester"
-               (click)="navigateToSemesterDetail()">
+  <gt-semester *ngFor="let semester of semesters" 
+               [semester]="semester" 
+               (click)="navigateToSemesterDetail(semester.id)">
   </gt-semester>
-</div>
+  <div class="test"></div>
+</div> 
