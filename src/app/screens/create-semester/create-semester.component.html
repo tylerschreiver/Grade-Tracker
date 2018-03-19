@@ -13,7 +13,7 @@
 
       <label style="margin-left: 30px;">Year: </label>
       <select formControlName="year">
-        <option *ngFor="let year of yearsAvailable" value="year">{{ year }}</option>
+        <option *ngFor="let year of yearsAvailable" value="{{year}}">{{ year }}</option>
       </select>
     </div>
   </form>
@@ -65,5 +65,5 @@
 
 
   </div>
-  <button *ngIf="semesterForm.valid" class="btn">Save Semester</button>
+  <button [disabled]="isSaving" *ngIf="semesterForm.valid" (click)="saveSemester()" class="btn">Save Semester</button>
 </div>

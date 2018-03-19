@@ -2,6 +2,8 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { Course } from '../../models/course.model';
 import { GradeScaleComponent } from './grade-scale/grade-scale.component';
+import { GradeReceiverService } from '../../services/grade-receiver.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'gt-create-semester',
@@ -16,10 +18,13 @@ export class CreateSemesterComponent implements OnInit {
   isScaleDone: Boolean = false;
   areGroupsDone: Boolean = false;
   courseObject: Course;
+  isSaving = false;
 
   @ViewChild(GradeScaleComponent) scale: GradeScaleComponent;
 
-  constructor(formBuilder: FormBuilder) {
+  constructor(formBuilder: FormBuilder,
+              public grade: GradeReceiverService,
+              public router: Router) {
     this.semesterForm = formBuilder.group({
       year: ['', Validators.required],
       session: ['', Validators.required],
@@ -69,8 +74,10 @@ export class CreateSemesterComponent implements OnInit {
   }
 
   saveSemester() {
-    let thing = this.semesterForm.value;
-    
+    this.isSaving = true;
+    this.grade.saveNewSemester(this.semesterForm.value);
+    this.isSaving = false;
+    this.router.navigateByUrl('/home');
   }
 
 
