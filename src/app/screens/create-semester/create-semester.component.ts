@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { Course } from '../../models/course.model';
+import { GradeScaleComponent } from './grade-scale/grade-scale.component';
 
 @Component({
   selector: 'gt-create-semester',
@@ -15,6 +16,8 @@ export class CreateSemesterComponent implements OnInit {
   isScaleDone: Boolean = false;
   areGroupsDone: Boolean = false;
   courseObject: Course;
+
+  @ViewChild(GradeScaleComponent) scale: GradeScaleComponent;
 
   constructor(formBuilder: FormBuilder) {
     this.semesterForm = formBuilder.group({
@@ -54,7 +57,20 @@ export class CreateSemesterComponent implements OnInit {
 
   saveCourse(course) {
     this.semesterForm.controls['courses'].value.push(course);
-    console.log(this.semesterForm.value);
+    this.resetNewCourse();
+  }
+
+  resetNewCourse() {
+    this.newCourseForm.reset();
+    this.isScaleDone = false;
+    this.areGroupsDone = false;
+    this.scale.reset();
+    this.creatingCourse = false;
+  }
+
+  saveSemester() {
+    let thing = this.semesterForm.value;
+    
   }
 
 

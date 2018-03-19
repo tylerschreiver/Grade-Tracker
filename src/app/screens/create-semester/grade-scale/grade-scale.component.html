@@ -1,6 +1,6 @@
 
 <div *ngIf="isEditing">
-    <div class="help-text"  >Enter the minimum percent to earn each respective grade</div>
+    <div class="help-text" *ngIf="type">Enter the minimum percent to earn each respective grade</div>
     <div class="outer" *ngIf="type == 'letter'">
       <form [formGroup]="letterForm">
         <div class="section form-group">

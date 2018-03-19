@@ -17,6 +17,14 @@
       </select>
     </div>
   </form>
+
+  <div *ngIf="semesterForm.controls['courses'].value.length">
+    <div class="subtitle">Completed Courses</div>
+    <div class="previews" *ngFor="let course of semesterForm.controls['courses'].value">
+      <gt-course-preview [course]="course"></gt-course-preview>
+    </div>
+  </div>
+
   <button (click)="newCourse()" *ngIf="!creatingCourse" class="btn">Create New Course</button>
   <div class="course-creator" *ngIf="creatingCourse">
     <form [formGroup]="newCourseForm">

@@ -74,6 +74,13 @@ export class GradeScaleComponent implements OnInit {
     this.complete.emit(false);
   }
 
+  reset() {
+    this.isEditing = true;
+    this.letterForm.reset();
+    this.plusMinusForm.reset();
+    this.plusForm.reset();
+  }
+
   changeScale() {
     let obj;
     let array = [];

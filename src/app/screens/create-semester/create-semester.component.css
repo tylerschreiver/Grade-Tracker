@@ -17,6 +17,19 @@ label {
   width: 100%;
 }
 
+.subtitle {
+  color: white;
+  font-size: 20px;
+  margin-bottom: 5px;
+  margin-top: 5px;
+}
+
+.previews {
+  display: inline-block;
+  margin-right: 5px;
+}
+
+
 h1 {
   color: rebeccapurple;
   -webkit-text-stroke: .4px white;
