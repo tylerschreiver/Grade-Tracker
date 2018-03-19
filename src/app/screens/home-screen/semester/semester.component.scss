@@ -7,6 +7,7 @@
     border: 1px solid black;
     border-radius: 5px;
     cursor: pointer;
+    position: relative;
     transition: box-shadow .3s;
 }
 
@@ -30,6 +31,7 @@
 .body {
     padding: 0px 10px;
     height: 130px;
+    position: relative;
 }
 
 .courses {
@@ -45,3 +47,26 @@
   text-align: center;
 }
 
+.delete {
+    bottom: 3px;
+    position: absolute;
+    right: 3px;
+    border: 1px solid rebeccapurple;
+    display: inline;
+    border-radius: 50%;
+    padding: 1px 4px;
+}
+
+.delete:hover {
+    border-color: #8844CC;
+    .fa-trash {
+        color: #8844CC;
+    }
+}
+
+.delete:active {
+    border-color: #AA55FF;
+    .fa-trash {
+        color: #AA55FF;
+    }
+}

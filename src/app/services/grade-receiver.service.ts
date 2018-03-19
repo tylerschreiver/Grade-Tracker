@@ -32,6 +32,10 @@ export class GradeReceiverService {
     this.db.object('/semesters/'+this.nextId).set(semester);
   }
 
+  deleteSemester(semester) {
+    this.db.object('semesters/'+semester.id).remove();
+  }
+
 
 }
 
