@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
 })
 export class AppComponent {
   constructor(public router: Router) { }
-  title = 'Grade Tracker';
+  title = 'Barely Passing';
   navToHome() {
     this.router.navigate(['home']);
   }

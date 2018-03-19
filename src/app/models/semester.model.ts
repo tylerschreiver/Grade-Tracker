@@ -9,7 +9,7 @@ export class Semester {
     constructor(json: any) {
         if (json.year) this.year = json.year;
         if (json.session) this.session = json.session;
-        if (json.id) this.id = json.id;
+        if (json.id) this.id = json.id-1;
         if (json.courses) {
             json.courses.forEach((course) => {
                 this.courses.push(new Course(course));
