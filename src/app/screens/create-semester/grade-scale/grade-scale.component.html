@@ -1,0 +1,105 @@
+
+<div *ngIf="isEditing">
+    <div class="help-text" *ngIf="type">Enter the minimum percent to earn each respective grade</div>
+    <div class="outer" *ngIf="type == 'letter'">
+      <form [formGroup]="letterForm">
+        <div class="section form-group">
+          <span class="letter">A</span>    <input (keyup)="letterFormValidity()" formControlName="a" type="number">
+          <span class="letter">B</span>    <input (keyup)="letterFormValidity()" formControlName="b" type="number">
+        </div>
+        <div class="section">
+          <span class="letter">C</span>    <input (keyup)="letterFormValidity()" formControlName="c" type="number">
+          <span class="letter">D</span>    <input (keyup)="letterFormValidity()" formControlName="d" type="number">
+        </div>
+      </form>
+
+
+    </div>
+    <div class="outer" *ngIf="type == 'plus'">
+        <form [formGroup]="plusForm">
+          <div class="section">
+            <span class="letter">A</span>    <input formControlName="a" type="number">
+            <span class="letter">A+</span>   <input formControlName="aPlus" type="number">
+          </div>
+          <div class="section">
+            <span class="letter">B</span>    <input formControlName="b" type="number">
+            <span class="letter">B+</span>   <input formControlName="bPlus" type="number">
+          </div>
+
+          <div class="section">
+            <span class="letter">C</span>    <input formControlName="c" type="number">
+            <span class="letter">C+</span>   <input formControlName="cPlus" type="number">
+          </div>
+
+          <div class="section">
+            <span class="letter">D</span>    <input formControlName="d" type="number">
+            <span class="letter">D+</span>   <input formControlName="dPlus" type="number">
+          </div>
+        </form>
+
+
+    </div>
+    <div class="outer" *ngIf="type == 'plusMinus'">
+      <form [formGroup]="plusMinusForm">
+        <div class="section">
+          <span class="letter">A-</span>   <input formControlName="aMinus" type="number">
+          <span class="letter">A</span>    <input formControlName="a" type="number">
+          <span class="letter">A+</span>   <input formControlName="aPlus" type="number">
+        </div>
+
+        <div class="section">
+          <span class="letter">B-</span>   <input formControlName="bMinus" type="number">
+          <span class="letter">B</span>    <input formControlName="b" type="number">
+          <span class="letter">B+</span>   <input formControlName="bPlus" type="number">
+        </div>
+
+        <div class="section">
+          <span class="letter">C-</span>   <input formControlName="cMinus" type="number">
+          <span class="letter">C</span>    <input formControlName="c" type="number">
+          <span class="letter">C+</span>   <input formControlName="cPlus" type="number">
+        </div>
+
+        <div class="section">
+          <span class="letter">D-</span>   <input formControlName="dMinus" type="number">
+          <span class="letter">D</span>    <input formControlName="d" type="number">
+          <span class="letter">D+</span>   <input formControlName="dPlus" type="number">
+        </div>
+      </form>
+    </div>
+    <div style="height:30px">
+      <button [disabled]="!isScaleValid" (click)="confirm()" class="btn confirm">Confirm Scale</button>
+    </div>
+</div>
+
+<div class="subtitle" *ngIf="!isEditing">Finished Scale</div>
+<div class="finished-scale" *ngIf="!isEditing">
+  <div class="scale" *ngIf="type == 'letter'">
+    <div class="letters">
+      <span *ngFor="let letter of letterChar" class="finished-letter-4">{{ letter }}</span>
+    </div>
+    <div class="numbers">
+      <span class="finished-letter-4" *ngFor="let num of letter">{{ num }}</span>
+    </div>
+  </div>
+  <div class="scale" *ngIf="type == 'plus'">
+    <div class="letters">
+      <span *ngFor="let letter of plusChar" class="finished-letter-8">{{ letter }}</span>
+    </div>
+    <div class="numbers">
+      <span class="finished-letter-8" *ngFor="let num of plus">{{ num }}</span>
+    </div>
+  </div>
+  <div class="scale" *ngIf="type == 'plusMinus'">
+    <div class="letters">
+      <span *ngFor="let letter of plusMinusChar" class="finished-letter-12">{{ letter }}</span>
+    </div>
+    <div class="numbers">
+      <span class="finished-letter-12" *ngFor="let num of plusMinus">{{ num }}</span>
+    </div>
+  </div>
+  <div class="edit">
+    <i (click)="edit()" class="fa fa-pencil"></i>
+  </div>
+</div>
+
+

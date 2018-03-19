@@ -15,6 +15,12 @@ import { RouterModule } from '@angular/router';
 import { SemesterDetailComponent } from './screens/semester-detail/semester-detail.component';
 import { CourseComponent } from './screens/semester-detail/course/course.component';
 import { GradeGroupComponent } from './screens/semester-detail/grade-group/grade-group.component';
+import { CreateSemesterComponent } from './screens/create-semester/create-semester.component';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { GradeScaleComponent } from './screens/create-semester/grade-scale/grade-scale.component';
+import { CreateGroupsComponent } from './screens/create-semester/create-group/create-groups.component';
+import { CreateGradeGroupComponent } from './screens/create-semester/create-group/create-grade-group/create-grade-group.component';
+import { CoursePreviewComponent } from './screens/create-semester/course-preview/course-preview.component';
 import { environment } from 'environments/environment';
 
 @NgModule({
@@ -24,10 +30,17 @@ import { environment } from 'environments/environment';
     SemesterComponent,
     SemesterDetailComponent,
     CourseComponent,
-    GradeGroupComponent
+    GradeGroupComponent,
+    CreateSemesterComponent,
+    GradeScaleComponent,
+    CreateGroupsComponent,
+    CreateGradeGroupComponent,
+    CoursePreviewComponent
   ],
   imports: [
     BrowserModule,
+    ReactiveFormsModule,
+    FormsModule,
     HttpClientModule,
     RouterModule.forRoot(appRoutes),
     AngularFireModule.initializeApp(environment.firebase),
