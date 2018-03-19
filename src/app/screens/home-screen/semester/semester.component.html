@@ -1,9 +1,9 @@
 <div *ngIf="!create" class="semester">
-  <div class="header">
+  <div class="header" (click)="navigateToSemesterDetail(semester.id)">
       {{ semester.session }}
       {{ semester.year }}
   </div>
-  <div class="body">
+  <div class="body" (click)="navigateToSemesterDetail(semester.id)">
     <div class="inner-body">
         Hours: {{ semester.hours }}
         <div class="courses">
@@ -14,5 +14,8 @@
           </div>
         </div>
     </div>
+  </div>
+  <div class="delete" (click)="delete()">
+      <i class="fa fa-trash"></i>      
   </div>
 </div>
