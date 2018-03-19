@@ -9,16 +9,29 @@ import { AngularFireDatabase } from 'angularfire2/database';
 
 @Injectable()
 export class GradeReceiverService {
+  semesters: any;
+  nextId = 0;
   semestersObservable: Observable<any[]>;
-  constructor(private db: AngularFireDatabase) {  }
+  constructor(private db: AngularFireDatabase) {
+    this.getSemesters().subscribe((data) => {
+      this.nextId = data.length;
+    })
+  }
 
   getSemesters(): Observable<any[]> {
-    return this.db.list('/semesters').valueChanges();
+    this.semesters = this.db.list('/semesters');
+    return this.semesters.valueChanges();
   }
 
-  getSemesterById(id): Observable<any> {
+  getSemesterById(id) {
     return this.db.object('/semesters/'+ id ).valueChanges();
   }
+
+  saveNewSemester(semester) {
+    semester.id = this.nextId;
+    this.db.object('/semesters/'+this.nextId).set(semester);
+  }
+
 
 }
 
