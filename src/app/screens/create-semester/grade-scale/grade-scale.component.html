@@ -4,12 +4,12 @@
     <div class="outer" *ngIf="type == 'letter'">
       <form [formGroup]="letterForm">
         <div class="section form-group">
-          <span class="letter">A</span>    <input formControlName="a" type="number">
-          <span class="letter">B</span>    <input formControlName="b" type="number">
+          <span class="letter">A</span>    <input (keyup)="letterFormValidity()" formControlName="a" type="number">
+          <span class="letter">B</span>    <input (keyup)="letterFormValidity()" formControlName="b" type="number">
         </div>
         <div class="section">
-          <span class="letter">C</span>    <input formControlName="c" type="number">
-          <span class="letter">D</span>    <input formControlName="d" type="number">
+          <span class="letter">C</span>    <input (keyup)="letterFormValidity()" formControlName="c" type="number">
+          <span class="letter">D</span>    <input (keyup)="letterFormValidity()" formControlName="d" type="number">
         </div>
       </form>
 
@@ -67,10 +67,11 @@
       </form>
     </div>
     <div style="height:30px">
-      <button [disabled]="false" (click)="confirm()" class="btn confirm">Confirm Scale</button>
+      <button [disabled]="!isScaleValid" (click)="confirm()" class="btn confirm">Confirm Scale</button>
     </div>
 </div>
 
+<div class="subtitle" *ngIf="!isEditing">Finished Scale</div>
 <div class="finished-scale" *ngIf="!isEditing">
   <div class="scale" *ngIf="type == 'letter'">
     <div class="letters">
@@ -97,7 +98,7 @@
     </div>
   </div>
   <div class="edit">
-    <i (click)="isEditing = true;" class="fa fa-pencil"></i>
+    <i (click)="edit()" class="fa fa-pencil"></i>
   </div>
 </div>
 

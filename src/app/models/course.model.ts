@@ -13,7 +13,14 @@ export class Course {
         if (json.hours) this.hours = json.hours;
         if (json.scaleType) this.scaleType = json.scaleType;
         if (json.gradeScale) this.gradeScale = json.gradeScale;
-        if (json.gradeGroups) this.gradeGroups = json.gradeGroups;
+        if (json.gradeGroups) {
+            let groups = [];
+            json.gradeGroups.forEach((group) => {
+                let groupObject = new GradeGroup(group);
+                groups.push(groupObject);
+            });
+            this.gradeGroups = groups;
+        }
     }
 
     averageInCourse() {

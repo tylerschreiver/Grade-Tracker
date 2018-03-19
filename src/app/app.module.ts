@@ -14,7 +14,8 @@ import { GradeGroupComponent } from './screens/semester-detail/grade-group/grade
 import { CreateSemesterComponent } from './screens/create-semester/create-semester.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { GradeScaleComponent } from './screens/create-semester/grade-scale/grade-scale.component';
-import { CreateGradeGroupComponent } from './screens/create-semester/create-grade-group/create-grade-group.component';
+import { CreateGroupsComponent } from './screens/create-semester/create-group/create-groups.component';
+import { CreateGradeGroupComponent } from './screens/create-semester/create-group/create-grade-group/create-grade-group.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { CreateGradeGroupComponent } from './screens/create-semester/create-grad
     GradeGroupComponent,
     CreateSemesterComponent,
     GradeScaleComponent,
+    CreateGroupsComponent,
     CreateGradeGroupComponent
   ],
   imports: [

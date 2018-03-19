@@ -30,7 +30,7 @@
        --><div class="col-2">
             <label>Hours</label>
             <select formControlName="hours" class="block hundo">
-              <option *ngFor="let num of [1,2,3,4,5]" value="num">{{ num }}</option>
+              <option *ngFor="let num of [1,2,3,4,5]" value="{{num}}">{{ num }}</option>
             </select>
           </div><!--
        --><div class="col-1"></div><!--
@@ -44,11 +44,12 @@
           </div>
         </div>
         <div *ngIf="newCourseForm.controls['scaleType'].value !== ''" class="row scale">
-          <gt-grade-scale [type]="newCourseForm.controls['scaleType'].value" (complete)="scaleFinished($event)"></gt-grade-scale>
+          <gt-grade-scale [type]="newCourseForm.controls['scaleType'].value" (complete)="receiveScale($event)"></gt-grade-scale>
         </div>
         <div *ngIf="isScaleDone" class="row">
-          <gt-create-grade-group></gt-create-grade-group>
+          <gt-create-groups (complete)="receiveGroups($event)"></gt-create-groups>
         </div>
+        <button (click)="saveCourse(courseObject)" *ngIf="isScaleDone && areGroupsDone" class="btn">Save Course</button>
       </div>
 
 
@@ -56,4 +57,5 @@
 
 
   </div>
+  <button *ngIf="semesterForm.valid" class="btn">Save Semester</button>
 </div>

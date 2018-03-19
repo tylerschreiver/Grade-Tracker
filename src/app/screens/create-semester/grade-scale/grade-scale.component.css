@@ -26,6 +26,11 @@ input {
   text-align: center;
 }
 
+.subtitle {
+  color: white;
+  font-size: 20px;
+}
+
 .letter {
   width: 22px;
   display: inline-block;

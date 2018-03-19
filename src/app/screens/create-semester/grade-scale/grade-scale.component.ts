@@ -23,6 +23,7 @@ export class GradeScaleComponent implements OnInit {
   plusMinusForm: FormGroup;
 
   isEditing = true;
+  valid = false;
 
 
   constructor(public el: ElementRef,
@@ -58,11 +59,19 @@ export class GradeScaleComponent implements OnInit {
       aMinus: ['', Validators.required],
       a: ['', Validators.required],
       aPlus: ['', Validators.required],
-
+     
     });
+
+    this.letterForm.controls['c'].setValidators(Validators.min(this.letterForm.controls['d'].value))
+    
   }
 
   ngOnInit() {
+  }
+
+  edit() {
+    this.isEditing = true;
+    this.complete.emit(false);
   }
 
   changeScale() {
@@ -104,28 +113,28 @@ export class GradeScaleComponent implements OnInit {
         this.letterForm.controls['a'].setValue(nums[3]);
         break;
       case 'plus':
-        this.letterForm.controls['d'].setValue(nums[0]);
-        this.letterForm.controls['dPlus'].setValue(nums[1]);
-        this.letterForm.controls['c'].setValue(nums[2]);
-        this.letterForm.controls['cPlus'].setValue(nums[3]);
-        this.letterForm.controls['b'].setValue(nums[4]);
-        this.letterForm.controls['bPlus'].setValue(nums[5]);
-        this.letterForm.controls['a'].setValue(nums[6]);
-        this.letterForm.controls['aPlus'].setValue(nums[7]);
+        this.plusForm.controls['d'].setValue(nums[0]);
+        this.plusForm.controls['dPlus'].setValue(nums[1]);
+        this.plusForm.controls['c'].setValue(nums[2]);
+        this.plusForm.controls['cPlus'].setValue(nums[3]);
+        this.plusForm.controls['b'].setValue(nums[4]);
+        this.plusForm.controls['bPlus'].setValue(nums[5]);
+        this.plusForm.controls['a'].setValue(nums[6]);
+        this.plusForm.controls['aPlus'].setValue(nums[7]);
         break;
       case 'plusMinus':
-        this.letterForm.controls['dMinus'].setValue(nums[0]);
-        this.letterForm.controls['d'].setValue(nums[1]);
-        this.letterForm.controls['dPlus'].setValue(nums[2]);
-        this.letterForm.controls['cMinus'].setValue(nums[3]);
-        this.letterForm.controls['c'].setValue(nums[4]);
-        this.letterForm.controls['cPlus'].setValue(nums[5]);
-        this.letterForm.controls['bMinus'].setValue(nums[6]);
-        this.letterForm.controls['b'].setValue(nums[7]);
-        this.letterForm.controls['bPlus'].setValue(nums[8]);
-        this.letterForm.controls['aMinus'].setValue(nums[9]);
-        this.letterForm.controls['a'].setValue(nums[10]);
-        this.letterForm.controls['aPlus'].setValue(nums[11]);
+        this.plusMinusForm.controls['dMinus'].setValue(nums[0]);
+        this.plusMinusForm.controls['d'].setValue(nums[1]);
+        this.plusMinusForm.controls['dPlus'].setValue(nums[2]);
+        this.plusMinusForm.controls['cMinus'].setValue(nums[3]);
+        this.plusMinusForm.controls['c'].setValue(nums[4]);
+        this.plusMinusForm.controls['cPlus'].setValue(nums[5]);
+        this.plusMinusForm.controls['bMinus'].setValue(nums[6]);
+        this.plusMinusForm.controls['b'].setValue(nums[7]);
+        this.plusMinusForm.controls['bPlus'].setValue(nums[8]);
+        this.plusMinusForm.controls['aMinus'].setValue(nums[9]);
+        this.plusMinusForm.controls['a'].setValue(nums[10]);
+        this.plusMinusForm.controls['aPlus'].setValue(nums[11]);
         break;
     }
   }
@@ -141,4 +150,51 @@ export class GradeScaleComponent implements OnInit {
     }
   }
 
+  get isScaleValid() {
+    switch(this.type) {
+      case 'letter': this.letterFormValidity(); return this.valid;
+      case 'plus': this.plusFormValidity(); return this.valid;
+      case 'plusMinus': this.plusMinusFormValidity();  return this.valid;
+    }
+  }
+
+  letterFormValidity() {
+    if (this.letterForm.valid) this.valid = true;
+
+    if (this.letterForm.controls['c'].value <= this.letterForm.controls['d'].value
+    || this.letterForm.controls['b'].value <= this.letterForm.controls['c'].value
+    || this.letterForm.controls['a'].value <= this.letterForm.controls['b'].value) {
+      this.valid = false;
+    }
+  }
+
+  plusFormValidity() {
+    if (this.plusForm.valid) this.valid = true;
+    if (this.plusForm.controls['dPlus'].value <= this.plusForm.controls['d'].value
+      ||this.plusForm.controls['c'].value <= this.plusForm.controls['dPlus'].value
+      ||this.plusForm.controls['cPlus'].value <= this.plusForm.controls['c'].value
+      ||this.plusForm.controls['b'].value <= this.plusForm.controls['cPlus'].value
+      ||this.plusForm.controls['bPlus'].value <= this.plusForm.controls['b'].value
+      ||this.plusForm.controls['a'].value <= this.plusForm.controls['bPlus'].value) {
+      this.valid = false;
+    }
+  }
+
+  plusMinusFormValidity() {
+    if (this.plusMinusForm.valid) this.valid = true;
+
+    if (this.plusMinusForm.controls['d'].value <= this.plusMinusForm.controls['dMinus'].value
+     || this.plusMinusForm.controls['dPlus'].value <= this.plusMinusForm.controls['d'].value
+     || this.plusMinusForm.controls['cMinus'].value <= this.plusMinusForm.controls['dPlus'].value
+     || this.plusMinusForm.controls['c'].value <= this.plusMinusForm.controls['cMinus'].value
+     || this.plusMinusForm.controls['cPlus'].value <= this.plusMinusForm.controls['c'].value
+     || this.plusMinusForm.controls['bMinus'].value <= this.plusMinusForm.controls['cPlus'].value
+     || this.plusMinusForm.controls['b'].value <= this.plusMinusForm.controls['bMinus'].value
+     || this.plusMinusForm.controls['bPlus'].value <= this.plusMinusForm.controls['b'].value
+     || this.plusMinusForm.controls['aMinus'].value <= this.plusMinusForm.controls['bPlus'].value
+     || this.plusMinusForm.controls['a'].value <= this.plusMinusForm.controls['aMinus'].value
+     || this.plusMinusForm.controls['aPlus'].value <= this.plusMinusForm.controls['a'].value) {
+      this.valid = false;
+    }
+  }
 }
