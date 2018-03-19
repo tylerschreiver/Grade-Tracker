@@ -4,7 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 @Component({
   selector: 'gt-grade-scale',
   templateUrl: './grade-scale.component.html',
-  styleUrls: ['./grade-scale.component.css']
+  styleUrls: ['./grade-scale.component.scss']
 })
 export class GradeScaleComponent implements OnInit {
   @Input() type: string;

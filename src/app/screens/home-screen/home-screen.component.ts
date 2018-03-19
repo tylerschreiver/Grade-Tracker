@@ -22,9 +22,7 @@ export class HomeScreenComponent {
   getSemesters(): void {
     this.semesters = [];
     this.GradeReceiver.getSemesters().subscribe(data => {
-      data.forEach((semester) => {
-        this.semesters.push(new Semester(semester));
-      });
+      this.updateSemesters(data);
     }, error => this.errorMessage = <any> error);
   }
   navigateToSemesterDetail(id?) {
@@ -33,6 +31,13 @@ export class HomeScreenComponent {
 
   navigateToCreateSemester() {
     this.router.navigate(['/semester-create']);
+  }
+
+  updateSemesters(data) {
+    this.semesters = [];
+    data.forEach((semester) => {
+      this.semesters.push(new Semester(semester));
+    });
   }
 
 }

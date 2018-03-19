@@ -57,7 +57,7 @@
         <div *ngIf="isScaleDone" class="row">
           <gt-create-groups (complete)="receiveGroups($event)"></gt-create-groups>
         </div>
-        <button (click)="saveCourse(courseObject)" *ngIf="isScaleDone && areGroupsDone" class="btn">Save Course</button>
+        <button (click)="saveCourse(courseObject)" *ngIf="isScaleDone && areGroupsDone && newCourseForm.valid" class="btn">Save Course</button>
       </div>
 
 

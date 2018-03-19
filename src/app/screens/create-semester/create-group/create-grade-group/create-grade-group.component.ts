@@ -4,7 +4,7 @@ import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 @Component({
   selector: 'gt-create-grade-group',
   templateUrl: './create-grade-group.component.html',
-  styleUrls: ['./create-grade-group.component.css']
+  styleUrls: ['./create-grade-group.component.scss']
 })
 export class CreateGradeGroupComponent implements OnInit {
   group: FormGroup;

@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'gt-create-semester',
   templateUrl: './create-semester.component.html',
-  styleUrls: ['./create-semester.component.css']
+  styleUrls: ['./create-semester.component.scss']
 })
 export class CreateSemesterComponent implements OnInit {
   semesterForm: FormGroup;

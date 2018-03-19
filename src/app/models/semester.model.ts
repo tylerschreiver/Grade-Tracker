@@ -23,7 +23,7 @@ export class Semester {
     get hours() {
         let hours = 0;
         this.courses.forEach((course) => {
-            hours += course.hours;
+            hours += Number(course.hours);
         });
         return hours;
     }

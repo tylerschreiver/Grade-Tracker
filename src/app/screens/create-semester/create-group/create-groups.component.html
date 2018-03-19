@@ -1,4 +1,4 @@
-<div *ngIf="!finish" class="menu">
+<div *ngIf="!finish" class="menu bottom-pad">
   <h1>Create Grade Groups</h1>
   <div class="pair">
     <label>Number of Grade Groups: </label>
@@ -12,7 +12,7 @@
  --><div class="col-2"><div class="pad-left"># of Grades <i>(optional)</i></div></div>
   </div>
   <div class="groups" *ngFor="let group of groups">
-    <gt-create-grade-group (valid)="receiveEvent($event)" [id]="group.id" [groupInfo]="group"></gt-create-grade-group>
+    <gt-create-grade-group [class.bottom]="group == groups[groups.length-1]" (valid)="receiveEvent($event)" [id]="group.id" [groupInfo]="group"></gt-create-grade-group>
   </div>
 </div>
 
