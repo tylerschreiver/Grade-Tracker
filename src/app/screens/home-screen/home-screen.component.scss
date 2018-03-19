@@ -1,7 +1,17 @@
 .menu {
-    background-color: #292929;
-    margin-top: 10px;
-    margin-left: 15px;
-    border-radius: 5px;
-    width: 80%;
+  background-color: #292929;
+  margin-top: 40px;
+  margin-left: 15px;
+  border-radius: 5px;
+  position: fixed;
+  width: 80%;
+}
+
+.header {
+  width: 80%;
+  position: fixed;
+}
+
+.create {
+  float: right;
 }

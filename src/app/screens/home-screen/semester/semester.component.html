@@ -1,4 +1,4 @@
-<div class="semester">
+<div *ngIf="!create" class="semester">
   <div class="header">
       {{ semester.session }}
       {{ semester.year }}
@@ -8,7 +8,7 @@
         Hours: {{ semester.hours }}
         <div class="courses">
           Courses:
-          <div class="course" *ngFor="let course of semester.courses"> 
+          <div class="course" *ngFor="let course of semester.courses">
             <span>{{ course.name }}</span>
             <!-- <span style="float:right">{{ course.gpa }}</span> -->
           </div>
