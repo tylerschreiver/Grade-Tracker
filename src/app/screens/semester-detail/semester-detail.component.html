@@ -5,6 +5,6 @@
     <div class="col-1 header-text">Hours</div>
   </div>
   <div class="course-wrapper" *ngFor="let course of semester.courses">
-    <gt-course [course]="course"></gt-course>
+    <gt-course (save)="saveCourse($event, course)" [course]="course"></gt-course>
   </div>
 </div>

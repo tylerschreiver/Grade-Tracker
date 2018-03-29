@@ -22,6 +22,7 @@ import { CreateGroupsComponent } from './screens/create-semester/create-group/cr
 import { CreateGradeGroupComponent } from './screens/create-semester/create-group/create-grade-group/create-grade-group.component';
 import { CoursePreviewComponent } from './screens/create-semester/course-preview/course-preview.component';
 import { environment } from 'environments/environment';
+import { GradeComponent } from './screens/semester-detail/grade/grade.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { environment } from 'environments/environment';
     GradeScaleComponent,
     CreateGroupsComponent,
     CreateGradeGroupComponent,
-    CoursePreviewComponent
+    CoursePreviewComponent,
+    GradeComponent
   ],
   imports: [
     BrowserModule,
