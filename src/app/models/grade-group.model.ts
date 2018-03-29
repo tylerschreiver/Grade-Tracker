@@ -41,4 +41,9 @@ export class GradeGroup {
         if (avg === null) return null;
         else return avg * this.weight;
     }
+
+    updateGrades(grades) {
+        this.grades = grades;
+        this.numGrades = this.grades.length;
+    }
 }

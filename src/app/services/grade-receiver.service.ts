@@ -36,6 +36,10 @@ export class GradeReceiverService {
     this.db.object('semesters/'+semester.id).remove();
   }
 
+  updateSemester(semester) {
+    this.db.object('semesters/'+semester.id).update(semester);
+  }
+
 
 }
 

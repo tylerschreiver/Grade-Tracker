@@ -10,11 +10,12 @@
 </div>
 <div *ngIf="isExpanded" class="grade-groups">
   <div class="heading">
-    <div class="col-4 spacer">Grade Group Name</div>
+    <div class="col-3 spacer">Grade Group Name</div>
     <div class="col-2">Weight</div>
+    <div class="col-1"></div>
     <div class="col-2">Average Grade</div>
   </div>
   <div class="group" *ngFor="let group of course.gradeGroups">
-    <gt-grade-group [group]="group"></gt-grade-group>
+    <gt-grade-group (save)="saveGroup($event, group)" [group]="group"></gt-grade-group>
   </div>
 </div>
