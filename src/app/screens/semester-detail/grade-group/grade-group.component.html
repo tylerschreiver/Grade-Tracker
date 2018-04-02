@@ -1,4 +1,4 @@
-<div *ngIf="groupObj">
+<div *ngIf="!edit && groupObj">
   <div class="col-3 spacer">{{ groupObj.name }}</div>
   <div class="col-2">{{ groupObj.weight }}</div>
   <div class="col-1"></div>
@@ -22,4 +22,8 @@
       <gt-grade (newGrade)="saveNewGrade($event)" [grade]="grade.grade" [edit]="grade.edit" ></gt-grade>
     </div>
   </div>
+</div>
+
+<div *ngIf="edit">
+  heyyo
 </div>

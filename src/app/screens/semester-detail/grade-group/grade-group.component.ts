@@ -14,6 +14,7 @@ export class GradeGroupComponent implements OnInit {
   gradeObjs = [];
   groupObj: GradeGroup;
   cancel: Boolean = false;
+  @Input() edit: boolean = false;
   @Output('save') save = new EventEmitter();
   constructor(public gradeReceiver: GradeReceiverService) { }
 
