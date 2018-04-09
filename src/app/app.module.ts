@@ -7,6 +7,7 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 
 import { AppComponent } from './app.component';
 import { HomeScreenComponent } from './screens/home-screen/home-screen.component';
+import { LoginComponent } from './screens/login/login.component';
 import { GradeReceiverService } from './services/grade-receiver.service';
 import { SemesterComponent } from './screens/home-screen/semester/semester.component';
 import { appRoutes } from './app-routing.module';
@@ -27,6 +28,7 @@ import { environment } from 'environments/environment';
   declarations: [
     AppComponent,
     HomeScreenComponent,
+    LoginComponent,
     SemesterComponent,
     SemesterDetailComponent,
     CourseComponent,
