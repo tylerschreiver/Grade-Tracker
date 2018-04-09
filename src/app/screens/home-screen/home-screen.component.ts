@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { GradeReceiverService } from '../../services/grade-receiver.service';
 import { Semester } from '../../models/semester.model';
 import { Router } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'gt-home-screen', // gt for GradeTracker
@@ -13,7 +14,10 @@ export class HomeScreenComponent {
   errorMessage:string;
 
   constructor(public GradeReceiver: GradeReceiverService,
-              public router: Router) {  }
+              public auth: AuthService,
+              public router: Router) { 
+                this.auth.isLoggedIn();
+               }
 
   ngOnInit() {
     this.getSemesters();

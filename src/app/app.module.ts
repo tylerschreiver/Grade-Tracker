@@ -23,6 +23,8 @@ import { CreateGroupsComponent } from './screens/create-semester/create-group/cr
 import { CreateGradeGroupComponent } from './screens/create-semester/create-group/create-grade-group/create-grade-group.component';
 import { CoursePreviewComponent } from './screens/create-semester/course-preview/course-preview.component';
 import { environment } from 'environments/environment';
+import { AuthService } from './services/auth.service';
+
 
 @NgModule({
   declarations: [
@@ -49,7 +51,7 @@ import { environment } from 'environments/environment';
     AngularFireDatabaseModule,
     AngularFireAuthModule
   ],
-  providers: [GradeReceiverService],
+  providers: [GradeReceiverService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

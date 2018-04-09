@@ -1,41 +1,34 @@
 import { Component, OnInit } from '@angular/core';
-import { GradeReceiverService } from '../../services/grade-receiver.service';
-import { Semester } from '../../models/semester.model';
 import { Router } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent {
-  semesters: Semester[] = [];
-  errorMessage:string;
+export class LoginComponent implements OnInit {
 
-  constructor(public GradeReceiver: GradeReceiverService,
-              public router: Router) {  }
+  user = {
+    email: '',
+    password: ''
+  };
+
+
+  constructor(public authService: AuthService, private router: Router) {
+    this.authService.isLoggedIn();
+  }
+    signInWithGoogle() {
+      this.authService.signInWithGoogle()
+      .then((res) => {
+          this.router.navigate(['login'])
+        })
+      .catch((err) => console.log(err));
+
+      this.authService.isLoggedIn();
+    }
 
   ngOnInit() {
-    this.getSemesters();
-  }
-
-  getSemesters(): void {
-    this.semesters = [];
-    this.GradeReceiver.getSemesters().subscribe(data => {
-      this.updateSemesters(data);
-    }, error => this.errorMessage = <any> error);
-  }
-
-  navigateToCreateSemester() {
-    this.router.navigate(['/semester-create']);
-  }
-
-  updateSemesters(data) {
-    this.semesters = [];
-    data.forEach((semester) => {
-      this.semesters.push(new Semester(semester));
-    });
   }
 
 }
-
