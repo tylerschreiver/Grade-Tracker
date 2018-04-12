@@ -25,5 +25,18 @@
 </div>
 
 <div *ngIf="edit">
-  heyyo
+  <form [formGroup]="groupForm">
+    <div class="form-group">
+      <div *ngIf="!nameComplete" class="col-3 spacer">
+        <input formControlName="name" type="text">
+      </div>
+      <div *ngIf="nameComplete" class="col-3 spacer">
+          {{groupForm.controls['name'].value}}
+        </div>
+      <div *ngIf="nameComplete" class="col-2">
+        <input (keyup)="change.emit();" formControlName="weight" type="number">
+      </div>
+      <span *ngIf="!nameComplete" class="right-button"><button (click)="adjustWeights()" [disabled]="!groupForm.controls['name'].valid" class="btn">Next</button></span>
+    </div>
+  </form>
 </div>

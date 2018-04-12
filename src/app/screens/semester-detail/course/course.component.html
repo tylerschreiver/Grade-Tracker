@@ -1,6 +1,6 @@
-<div class="course-wrapper">
+<div *ngIf="courseObj" class="course-wrapper">
     <div class="col-4">{{ courseObj.name }}</div>
-    <div class="col-3">{{ courseObj.averageIncourse()*100 }}%</div>
+    <div class="col-3">{{ courseObj.averageInCourse()*100 }}%</div>
     <div class="col-1">{{ courseObj.hours }}</div>
     <span class="buttons">
       <i class="fa fa-pencil"></i>
@@ -17,9 +17,16 @@
     <span class="right">
       <i *ngIf="!cancel" (click)="newGradeGroup()" class="fa fa-plus white"></i>
       <i *ngIf="cancel" (click)="cancelNewGradeGroup()" class="fa fa-times white"></i>
+      <i *ngIf="cancel && canConfirmNewGroups" (click)="confirmNewGradeGroup()" class="fa fa-check white"></i>
     </span>
   </div>
+  <div *ngIf="cancel && !canConfirmNewGroups" class="help-text">Total Weights Must Add to 100</div>
   <div class="group" *ngFor="let group of gradeGroups">
-    <gt-grade-group (save)="saveGroup($event, group)" [group]="group.group" [edit]="group.edit"></gt-grade-group>
+    <gt-grade-group (save)="saveGroup($event, group)" 
+                    (change)="checkWeightTotals()"
+                    (weight)="changeWeights()" 
+                    [group]="group.group"
+                    [edit]="group.edit"
+                    id="{{group.id}}"></gt-grade-group>
   </div>
 </div>

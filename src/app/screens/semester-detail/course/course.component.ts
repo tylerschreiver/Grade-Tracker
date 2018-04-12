@@ -1,6 +1,9 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ViewChildren, QueryList } from '@angular/core';
 import { Course } from '../../../models/course.model';
 import { GradeGroup } from '../../../models/grade-group.model';
+import { Grade } from '../../../models/grade.model';
+import { stripGeneratedFileSuffix } from '@angular/compiler/src/aot/util';
+import { GradeGroupComponent } from '../grade-group/grade-group.component';
 
 @Component({
   selector: 'gt-course',
@@ -11,6 +14,9 @@ export class CourseComponent implements OnInit {
   isExpanded: Boolean = false;
   courseObj: Course;
   gradeGroups: any[] = [];
+  cancel: boolean = false;
+  canConfirmNewGroups = false;
+  @ViewChildren(GradeGroupComponent) components: QueryList<GradeGroupComponent>;
   @Output('save') save = new EventEmitter();
   constructor() { }
 
@@ -20,8 +26,10 @@ export class CourseComponent implements OnInit {
   
   @Input() set course(course: Course) {
     this.courseObj = course;
+    let i = 0;
     course.gradeGroups.forEach((group) => {
-      this.gradeGroups.push({"group": group, "edit":false});
+      this.gradeGroups.push({"group": group, "edit":false, "id": i});
+      i++;
     });
   }
 
@@ -35,12 +43,43 @@ export class CourseComponent implements OnInit {
   }
 
   newGradeGroup() {
+    this.cancel = true;
     let temp = this.gradeGroups;
     this.gradeGroups = [];
-    this.gradeGroups.push({"grade": null, "edit":false});
+    this.gradeGroups.push({"grade": new GradeGroup({}), "edit":true, id: 0});
+    let i = 1;
     temp.forEach((group) => {
+      group.id = i;
       this.gradeGroups.push(group);
     });
   }
 
+  cancelNewGradeGroup() {
+    this.cancel = false;
+    this.gradeGroups = this.gradeGroups.slice(1, this.gradeGroups.length);
+    this.gradeGroups.forEach((group) => {
+      group.id = group.id - 1;
+    });
+    this.components.toArray().forEach((comp) => {
+      comp.stopWeightChange();
+    })
+  }
+
+  changeWeights() {
+    this.components.toArray().forEach((comp) => {
+      comp.startWeightChange();
+    });
+  }
+
+  checkWeightTotals() {
+    setTimeout(() => {
+      let value = 0;
+      let allValid = true;
+      this.components.toArray().forEach((comp) => {
+        if(!comp.groupForm.valid) allValid = false;
+        else value += comp.groupForm.controls['weight'].value;
+      });
+      this.canConfirmNewGroups = (allValid && value === 100);
+    });
+  }
 }

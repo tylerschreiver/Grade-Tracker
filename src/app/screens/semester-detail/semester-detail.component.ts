@@ -27,6 +27,9 @@ export class SemesterDetailComponent {
         course = e;
       }
     });
+  }
+
+  saveSemester() {
     this.GradeReceiver.updateSemester(this.semester)
   }
 }
