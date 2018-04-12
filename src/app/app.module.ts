@@ -7,6 +7,7 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 
 import { AppComponent } from './app.component';
 import { HomeScreenComponent } from './screens/home-screen/home-screen.component';
+import { LoginComponent } from './screens/login/login.component';
 import { GradeReceiverService } from './services/grade-receiver.service';
 import { SemesterComponent } from './screens/home-screen/semester/semester.component';
 import { appRoutes } from './app-routing.module';
@@ -22,12 +23,15 @@ import { CreateGroupsComponent } from './screens/create-semester/create-group/cr
 import { CreateGradeGroupComponent } from './screens/create-semester/create-group/create-grade-group/create-grade-group.component';
 import { CoursePreviewComponent } from './screens/create-semester/course-preview/course-preview.component';
 import { environment } from 'environments/environment';
+import { AuthService } from './services/auth.service';
+
 import { GradeComponent } from './screens/semester-detail/grade/grade.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeScreenComponent,
+    LoginComponent,
     SemesterComponent,
     SemesterDetailComponent,
     CourseComponent,
@@ -49,7 +53,7 @@ import { GradeComponent } from './screens/semester-detail/grade/grade.component'
     AngularFireDatabaseModule,
     AngularFireAuthModule
   ],
-  providers: [GradeReceiverService],
+  providers: [GradeReceiverService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

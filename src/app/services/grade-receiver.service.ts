@@ -9,7 +9,7 @@ import { AngularFireDatabase } from 'angularfire2/database';
 
 @Injectable()
 export class GradeReceiverService {
-  semesters: any;
+  semesters: any = {};
   nextId = 0;
   semestersObservable: Observable<any[]>;
   constructor(private db: AngularFireDatabase) {
