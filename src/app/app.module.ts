@@ -25,6 +25,7 @@ import { CoursePreviewComponent } from './screens/create-semester/course-preview
 import { environment } from 'environments/environment';
 import { AuthService } from './services/auth.service';
 
+import { GradeComponent } from './screens/semester-detail/grade/grade.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { AuthService } from './services/auth.service';
     GradeScaleComponent,
     CreateGroupsComponent,
     CreateGradeGroupComponent,
-    CoursePreviewComponent
+    CoursePreviewComponent,
+    GradeComponent
   ],
   imports: [
     BrowserModule,

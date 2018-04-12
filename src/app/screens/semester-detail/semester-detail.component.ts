@@ -23,4 +23,12 @@ export class SemesterDetailComponent {
     }, error => this.errorMessage = <any> error);
   }
 
+  saveCourse(e, originalCourse) {
+    this.semester.courses.forEach((course) => {
+      if(course == originalCourse) {
+        course = e;
+      }
+    });
+    this.GradeReceiver.updateSemester(this.semester)
+  }
 }
