@@ -9,14 +9,14 @@ export class AuthService {
   private user: Observable<firebase.User>;
   private userDetails: firebase.User = null;
 
-constructor(private _firebaseAuth: AngularFireAuth, private router: Router) { 
+constructor(private _firebaseAuth: AngularFireAuth, 
+            private router: Router) { 
       this.user = _firebaseAuth.authState;
 
       this.user.subscribe(
         (user) => {
           if (user) {
             this.userDetails = user;
-            console.log(this.userDetails);
           }
           else {
             this.userDetails = null;
@@ -33,14 +33,12 @@ constructor(private _firebaseAuth: AngularFireAuth, private router: Router) {
 
   isLoggedIn() {
     if (this.userDetails == null ) {
-        console.log("User not logged in");
-        return false;
-      } else {
-        console.log("User details")
-        console.log(this.userDetails);
-        return true;
-      }
+      this.router.navigate(['login']);
+      return false;
     }
+    else return true;
+  }
+
   logout() {
       this._firebaseAuth.auth.signOut()
       .then((res) => this.router.navigate(['/']));

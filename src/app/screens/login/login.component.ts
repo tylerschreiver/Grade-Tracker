@@ -8,27 +8,21 @@ import { AuthService } from '../../services/auth.service';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-
-  user = {
-    email: '',
-    password: ''
-  };
-
-
   constructor(public authService: AuthService, private router: Router) {
     this.authService.isLoggedIn();
   }
-    signInWithGoogle() {
-      this.authService.signInWithGoogle()
-      .then((res) => {
-          this.router.navigate(['login'])
-        })
-      .catch((err) => console.log(err));
-
-      this.authService.isLoggedIn();
-    }
 
   ngOnInit() {
+    document.getElementById('logout').style.display = "none"
+  }
+
+  signInWithGoogle() {
+    this.authService.signInWithGoogle()
+    .then((res) => {
+        document.getElementById('logout').style.display = "inline"
+        this.router.navigate(['/home']);
+      })
+    .catch((err) => console.log(err));
   }
 
 }

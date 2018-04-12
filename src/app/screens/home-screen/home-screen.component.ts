@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { GradeReceiverService } from '../../services/grade-receiver.service';
 import { Semester } from '../../models/semester.model';
 import { Router } from '@angular/router';
@@ -11,23 +11,21 @@ import { AuthService } from '../../services/auth.service';
 })
 export class HomeScreenComponent {
   semesters: Semester[] = [];
-  errorMessage:string;
 
   constructor(public GradeReceiver: GradeReceiverService,
               public auth: AuthService,
-              public router: Router) { 
-                this.auth.isLoggedIn();
-               }
+              public router: Router,
+              public change: ChangeDetectorRef) {  }
 
   ngOnInit() {
     this.getSemesters();
   }
 
-  getSemesters(): void {
+  getSemesters() {
     this.semesters = [];
     this.GradeReceiver.getSemesters().subscribe(data => {
       this.updateSemesters(data);
-    }, error => this.errorMessage = <any> error);
+    }, error => console.log(error));
   }
 
   navigateToCreateSemester() {
@@ -37,7 +35,9 @@ export class HomeScreenComponent {
   updateSemesters(data) {
     this.semesters = [];
     data.forEach((semester) => {
-      this.semesters.push(new Semester(semester));
+      setTimeout(() => {
+        this.semesters.push(new Semester(semester));
+      },1)
     });
   }
 
