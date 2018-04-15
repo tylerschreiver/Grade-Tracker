@@ -4,6 +4,7 @@ import { GradeGroup } from '../../../models/grade-group.model';
 import { Grade } from '../../../models/grade.model';
 import { stripGeneratedFileSuffix } from '@angular/compiler/src/aot/util';
 import { GradeGroupComponent } from '../grade-group/grade-group.component';
+import { DecimalPipe } from '@angular/common';
 
 @Component({
   selector: 'gt-course',
@@ -97,5 +98,23 @@ export class CourseComponent implements OnInit {
       this.courseObj.gradeGroups.push(new GradeGroup(gradegroup.grade));
     });
     this.save.emit(this.courseObj);
+  }
+
+  deleteGroup(e) {
+    if (confirm("Are you sure you want to delete this grade group?")) {
+      this.cancel = true;
+      let temp = [];
+      this.gradeGroups.forEach((group) => {
+        if (group.group.name != e.name && group.group.weight != e.weight) {
+          temp.push(group);
+        }
+      });
+      this.gradeGroups = temp;
+      this.courseObj.gradeGroups = [];
+      this.gradeGroups.forEach((group) => {
+        this.courseObj.gradeGroups.push(group.group);
+      });
+      this.changeWeights();
+    }
   }
 }

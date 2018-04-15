@@ -10,6 +10,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class GradeComponent implements OnInit {
   @Input() grade: Grade;
   @Input() edit: any;
+  @Output('deleter') deleter = new EventEmitter();
   @Output('newGrade') newGrade = new EventEmitter();
   gradeForm: FormGroup;
   constructor(public fb: FormBuilder) { 
@@ -27,5 +28,12 @@ export class GradeComponent implements OnInit {
     this.grade = this.gradeForm.value;
     this.edit = false;
     this.newGrade.emit(this.gradeForm.value);
+  }
+
+  deleteGrade() {
+    let confirmed = confirm("Are you sure you want to delete this grade?");
+    if (confirmed) {
+      this.deleter.emit(this);
+    }
   }
 }

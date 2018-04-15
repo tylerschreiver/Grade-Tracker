@@ -22,6 +22,7 @@ export class GradeGroupComponent implements OnInit {
   @Output('save') save = new EventEmitter();
   @Output('weight') weight = new EventEmitter();
   @Output('change') change = new EventEmitter();
+  @Output('deleteGroup') deleteGroup = new EventEmitter();
   constructor(public gradeReceiver: GradeReceiverService,
               public fb: FormBuilder) { 
                 this.groupForm = fb.group({
@@ -97,6 +98,23 @@ export class GradeGroupComponent implements OnInit {
     if(this.groupObj) this.groupObj.weight = this.oldValue;
     this.nameComplete = false;
     this.edit = false;
+  }
+
+  deleteGrade(e) {
+    let tempGrades = [];
+    let i = 0;
+    this.groupObj.grades.forEach((grade) => {
+      if (grade.name !== e.grade.name || grade.pointsEarned !== e.grade.pointsEarned
+          || grade.totalPoints !== e.grade.totalPoints) tempGrades.push(grade);
+      else this.gradeObjs.splice(i,1);
+      i++;
+    });
+    this.groupObj.grades = tempGrades;
+    this.save.emit(this.groupObj);
+  }
+
+  deleteGradeGroup() {
+    this.deleteGroup.emit(this.groupObj);
   }
 
 }
