@@ -26,7 +26,9 @@ export class GradeGroupComponent implements OnInit {
               public fb: FormBuilder) { 
                 this.groupForm = fb.group({
                   name: ['', Validators.required],
-                  weight: [0, Validators.min(1)]
+                  weight: [0, Validators.min(1)],
+                  // numGrades: [0],
+                  // grades: [[]]
                 });
               }
 
@@ -71,8 +73,12 @@ export class GradeGroupComponent implements OnInit {
   }
 
   addGradeGroup() {
+    let oldGrades = [];
+    if (this.groupObj && this.groupObj.grades) oldGrades = this.groupObj.grades;
     this.groupObj = new GradeGroup(this.groupForm.value);
+    this.groupObj.grades = oldGrades;
     this.edit = false;
+    return this.groupObj;
   }
 
   adjustWeights() {

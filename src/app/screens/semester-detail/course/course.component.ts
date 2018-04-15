@@ -82,4 +82,20 @@ export class CourseComponent implements OnInit {
       this.canConfirmNewGroups = (allValid && value === 100);
     });
   }
+
+  confirmNewGradeGroup() {
+    this.cancel = false;
+    let i = 0;
+    this.components.forEach((comp) => {
+      comp.edit = false;
+      comp.cancel = false;
+      this.gradeGroups[i].grade = comp.addGradeGroup();
+      i++;
+    });
+    this.courseObj.gradeGroups = [];
+    this.gradeGroups.forEach((gradegroup) => {
+      this.courseObj.gradeGroups.push(new GradeGroup(gradegroup.grade));
+    });
+    this.save.emit(this.courseObj);
+  }
 }
