@@ -1,6 +1,6 @@
 <div *ngIf="courseObj" class="course-wrapper">
     <div class="col-4">{{ courseObj.name }}</div>
-    <div class="col-3">{{ courseObj.averageInCourse()*100 }}%</div>
+    <div class="col-3">{{ courseObj.averageInCourse()*100 | number:'.1-3' }}%</div>
     <div class="col-1">{{ courseObj.hours }}</div>
     <span class="buttons">
       <i class="fa fa-pencil"></i>
@@ -24,7 +24,8 @@
   <div class="group" *ngFor="let group of gradeGroups">
     <gt-grade-group (save)="saveGroup($event, group)" 
                     (change)="checkWeightTotals()"
-                    (weight)="changeWeights()" 
+                    (weight)="changeWeights()"
+                    (deleteGroup)="deleteGroup($event)"
                     [group]="group.group"
                     [edit]="group.edit"
                     id="{{group.id}}"></gt-grade-group>
