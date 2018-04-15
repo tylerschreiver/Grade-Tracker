@@ -23,8 +23,8 @@ export class SemesterDetailComponent {
       this.uid = param['uid'];
     });
 
-    this.GradeReceiver.getSemesterById(this.uid,this.id).subscribe(data => {
-      this.semester = new Semester(data);
+    this.GradeReceiver.getSemesterById(this.uid,this.id).subscribe((data:any) => {
+      if (data) this.semester = new Semester(data);
     }, error => this.errorMessage = <any> error);
   }
 
