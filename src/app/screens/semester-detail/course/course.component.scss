@@ -14,12 +14,19 @@
     margin-right: 5px;
 }
 
+.white {
+    color:white;
+}
 .fa-plus {
     margin-left: 10px;
 }
 
 .fa {
     cursor: pointer;
+}
+
+.right {
+    margin-right: 10px;
 }
 
 .grade-groups {
@@ -46,4 +53,16 @@
 
 .group:last-child {
     border-bottom: none;
+}
+
+.fa-check {
+    margin-left: 10px;
+}
+
+.help-text {
+    color:red;
+    border-bottom: 1px solid black;
+    font-style: italic;
+    text-align: center;
+    padding: 5px;
 }
