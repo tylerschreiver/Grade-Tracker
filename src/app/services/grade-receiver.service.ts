@@ -10,34 +10,30 @@ import { AngularFireDatabase } from 'angularfire2/database';
 @Injectable()
 export class GradeReceiverService {
   semesters: any = {};
-  nextId = 0;
   semestersObservable: Observable<any[]>;
   constructor(private db: AngularFireDatabase) {
-    this.getSemesters().subscribe((data) => {
-      this.nextId = data.length;
-    })
   }
 
-  getSemesters(): Observable<any[]> {
-    this.semesters = this.db.list('/semesters');
+  getSemesters(uid): Observable<any[]> {
+    this.semesters = this.db.list('/' + uid + '/semesters');
     return this.semesters.valueChanges();
   }
 
-  getSemesterById(id) {
-    return this.db.object('/semesters/'+ id ).valueChanges();
+  getSemesterById(uid, id) {
+    return this.db.object('/' + uid + '/semesters/'+ id ).valueChanges();
   }
 
-  saveNewSemester(semester) {
-    semester.id = this.nextId;
-    this.db.object('/semesters/'+this.nextId).set(semester);
+  saveNewSemester(uid,semester,id) {
+    semester.id = id;
+    this.db.object('/' + uid + '/semesters/'+id).set(semester);
   }
 
-  deleteSemester(semester) {
-    this.db.object('semesters/'+semester.id).remove();
+  deleteSemester(uid, semester) {
+    this.db.object('/' + uid + '/semesters/'+semester.id).remove();
   }
 
-  updateSemester(semester) {
-    this.db.object('semesters/'+semester.id).update(semester);
+  updateSemester(uid, semester) {
+    this.db.object('/' + uid + '/semesters/'+semester.id).update(semester);
   }
 
 

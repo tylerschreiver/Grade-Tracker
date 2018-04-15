@@ -7,16 +7,16 @@ import { Observable } from 'rxjs/Observable';
 @Injectable()
 export class AuthService {
   private user: Observable<firebase.User>;
-  private userDetails: firebase.User = null;
-
+  private userDetails: firebase.User;
+  uid: string;
 constructor(private _firebaseAuth: AngularFireAuth, 
             private router: Router) { 
       this.user = _firebaseAuth.authState;
-
       this.user.subscribe(
         (user) => {
           if (user) {
             this.userDetails = user;
+            this.uid = user.uid;
           }
           else {
             this.userDetails = null;
@@ -40,8 +40,12 @@ constructor(private _firebaseAuth: AngularFireAuth,
   }
 
   logout() {
-      this._firebaseAuth.auth.signOut()
-      .then((res) => this.router.navigate(['/']));
-    }
+    this._firebaseAuth.auth.signOut()
+    .then((res) => this.router.navigate(['/']));
   }
+  
+  getUserDetails() {
+    return this._firebaseAuth.authState;
+  }  
+}
 

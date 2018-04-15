@@ -4,6 +4,7 @@ import { Course } from '../../models/course.model';
 import { GradeScaleComponent } from './grade-scale/grade-scale.component';
 import { GradeReceiverService } from '../../services/grade-receiver.service';
 import { Router } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'gt-create-semester',
@@ -19,12 +20,18 @@ export class CreateSemesterComponent implements OnInit {
   areGroupsDone: Boolean = false;
   courseObject: Course;
   isSaving = false;
+  nextId: any;
+  uid: string;
 
   @ViewChild(GradeScaleComponent) scale: GradeScaleComponent;
 
   constructor(formBuilder: FormBuilder,
+              auth: AuthService,
               public grade: GradeReceiverService,
               public router: Router) {
+    auth.getUserDetails().subscribe((detail) => {
+      this.uid = detail.uid;
+    });
     this.semesterForm = formBuilder.group({
       year: ['', Validators.required],
       session: ['', Validators.required],
@@ -41,6 +48,7 @@ export class CreateSemesterComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.getNextSemesterId();
   }
 
 
@@ -75,9 +83,15 @@ export class CreateSemesterComponent implements OnInit {
 
   saveSemester() {
     this.isSaving = true;
-    this.grade.saveNewSemester(this.semesterForm.value);
+    this.grade.saveNewSemester(this.uid, this.semesterForm.value, this.nextId);
     this.isSaving = false;
     this.router.navigateByUrl('/home');
+  }
+
+  getNextSemesterId() {
+    this.grade.getSemesters(this.uid).subscribe((data) => {
+      this.nextId = data[data.length-1].id + 1;
+    })
   }
 
 

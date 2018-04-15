@@ -15,15 +15,19 @@ export class HomeScreenComponent {
   constructor(public GradeReceiver: GradeReceiverService,
               public auth: AuthService,
               public router: Router,
-              public change: ChangeDetectorRef) {  }
+              public change: ChangeDetectorRef) {  
+                auth.getUserDetails().subscribe((detail) => {
+                  this.getSemesters(detail.uid)
+                });
+              }
 
   ngOnInit() {
-    this.getSemesters();
+    // this.getSemesters();
   }
 
-  getSemesters() {
+  getSemesters(id) {
     this.semesters = [];
-    this.GradeReceiver.getSemesters().subscribe(data => {
+    this.GradeReceiver.getSemesters(id).subscribe(data => {
       this.updateSemesters(data);
     }, error => console.log(error));
   }
