@@ -9,7 +9,7 @@ import { LoginComponent } from './screens/login/login.component';
 export const appRoutes: Routes = [
     { path: '', redirectTo: '/login', pathMatch: 'full' },
     { path: 'home', component: HomeScreenComponent },
-    { path: 'semester/:id', component: SemesterDetailComponent },
+    { path: ':uid/semester/:id', component: SemesterDetailComponent },
     { path: 'semester-create', component: CreateSemesterComponent },
     { path: 'login', component: LoginComponent }
 ]

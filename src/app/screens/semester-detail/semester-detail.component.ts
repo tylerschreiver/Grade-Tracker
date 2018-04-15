@@ -12,13 +12,18 @@ import { AuthService } from '../../services/auth.service';
 export class SemesterDetailComponent {
   semester: Semester;
   id: any;
+  uid: string;
   errorMessage: string;
 
   constructor(public GradeReceiver: GradeReceiverService,
               public route: ActivatedRoute,
               private auth: AuthService) {
-    route.params.forEach((param) => this.id = param['id']);
-    this.GradeReceiver.getSemesterById(this.id).subscribe(data => {
+    route.params.forEach((param) => {
+      this.id = param['id']
+      this.uid = param['uid'];
+    });
+
+    this.GradeReceiver.getSemesterById(this.uid,this.id).subscribe(data => {
       this.semester = new Semester(data);
     }, error => this.errorMessage = <any> error);
   }
@@ -32,6 +37,6 @@ export class SemesterDetailComponent {
   }
 
   saveSemester() {
-    this.GradeReceiver.updateSemester(this.semester)
+    this.GradeReceiver.updateSemester(this.uid, this.semester)
   }
 }
