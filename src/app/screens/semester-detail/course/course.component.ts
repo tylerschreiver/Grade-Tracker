@@ -18,6 +18,7 @@ export class CourseComponent implements OnInit {
   old: any[] = [];
   cancel: boolean = false;
   groupEdit = false;
+  edit: boolean = false;
   canConfirmNewGroups = false;
   @ViewChildren(GradeGroupComponent) components: QueryList<GradeGroupComponent>;
   @Output('save') save = new EventEmitter();
@@ -138,5 +139,11 @@ export class CourseComponent implements OnInit {
       });
       this.changeWeights();
     }
+  }
+
+  beginEdit() {
+    this.isExpanded = false;
+    this.edit = true;
+    console.log(this.courseObj);
   }
 }

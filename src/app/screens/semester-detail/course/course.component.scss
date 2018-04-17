@@ -66,3 +66,19 @@
     text-align: center;
     padding: 5px;
 }
+
+input {
+    position: relative;
+    width: calc(100% - 30px);
+    min-width: 25px;
+}
+
+.scale {
+    margin-top: 15px;
+    margin-bottom: 10px;
+}
+
+.ellipses {
+    text-overflow: ellipsis;
+    overflow: hidden;
+}

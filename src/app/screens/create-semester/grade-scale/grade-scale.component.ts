@@ -112,6 +112,7 @@ export class GradeScaleComponent implements OnInit {
   }
 
   @Input() set scale(nums) {
+    console.log(nums);
     switch(this.type) {
       case 'letter':
         this.letterForm.controls['d'].setValue(nums[0]);

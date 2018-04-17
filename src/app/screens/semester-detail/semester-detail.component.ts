@@ -42,6 +42,6 @@ export class SemesterDetailComponent {
     document.getElementsByClassName('changes-saved')[0].classList.add('block');
     setTimeout(() => {
       document.getElementsByClassName('changes-saved')[0].classList.remove('block');
-    },3000)
+    },3000);
   }
 }
