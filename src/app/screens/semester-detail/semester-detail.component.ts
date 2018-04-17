@@ -34,9 +34,14 @@ export class SemesterDetailComponent {
         course = e;
       }
     });
+    this.saveSemester();
   }
 
   saveSemester() {
-    this.GradeReceiver.updateSemester(this.uid, this.semester)
+    this.GradeReceiver.updateSemester(this.uid, this.semester);
+    document.getElementsByClassName('changes-saved')[0].classList.add('block');
+    setTimeout(() => {
+      document.getElementsByClassName('changes-saved')[0].classList.remove('block');
+    },3000)
   }
 }
