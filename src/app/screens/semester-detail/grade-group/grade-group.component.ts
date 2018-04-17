@@ -23,6 +23,8 @@ export class GradeGroupComponent implements OnInit {
   @Output('weight') weight = new EventEmitter();
   @Output('change') change = new EventEmitter();
   @Output('deleteGroup') deleteGroup = new EventEmitter();
+  @Output('editGroup') editGroup = new EventEmitter();
+
   constructor(public gradeReceiver: GradeReceiverService,
               public fb: FormBuilder) { 
                 this.groupForm = fb.group({
@@ -113,6 +115,13 @@ export class GradeGroupComponent implements OnInit {
 
   deleteGradeGroup() {
     this.deleteGroup.emit(this.groupObj);
+  }
+
+  editMode() {
+    this.edit = true;
+    this.groupForm.controls['name'].setValue(this.groupObj.name);
+    this.groupForm.controls['weight'].setValue(this.groupObj.weight);
+    this.editGroup.emit();
   }
 
 }

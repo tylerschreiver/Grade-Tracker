@@ -4,6 +4,7 @@
   <div class="col-1"></div>
   <div class="col-2">{{ groupObj.average()*100 | number:'.1-3' }}%</div>
   <span class="buttons">
+    <i (click)="editMode()" class="fa fa-pencil"></i>
     <i (click)="deleteGradeGroup()" class="fa fa-trash"></i>
     <i *ngIf="!isExpanded" (click)="isExpanded = true" class="fa fa-chevron-down submenu"></i>
     <i *ngIf="isExpanded" (click)="isExpanded = false" class="fa fa-chevron-up submenu"></i>
