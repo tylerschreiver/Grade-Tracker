@@ -15,7 +15,9 @@ export class CourseComponent implements OnInit {
   isExpanded: Boolean = false;
   courseObj: Course;
   gradeGroups: any[] = [];
+  old: any[] = [];
   cancel: boolean = false;
+  groupEdit = false;
   canConfirmNewGroups = false;
   @ViewChildren(GradeGroupComponent) components: QueryList<GradeGroupComponent>;
   @Output('save') save = new EventEmitter();
@@ -83,6 +85,26 @@ export class CourseComponent implements OnInit {
       this.canConfirmNewGroups = (allValid && value === 100);
     });
   }
+
+  editGroup() {
+    this.old = [];
+    this.groupEdit = true;
+    this.components.toArray().forEach((comp) => {
+      this.old.push(comp.groupObj);
+    });
+  }
+
+  cancelEdit() {
+    let length = this.components.toArray().length;
+    let comps = this.components.toArray();
+    for (let i=0; i<length; i++) {
+      comps[i].edit = false;
+      comps[i].groupObj = this.old[i];
+      comps[i].nameComplete = false;
+    }
+    this.groupEdit = false;
+  }
+
 
   confirmNewGradeGroup() {
     this.cancel = false;

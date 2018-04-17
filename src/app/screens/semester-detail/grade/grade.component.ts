@@ -36,4 +36,11 @@ export class GradeComponent implements OnInit {
       this.deleter.emit(this);
     }
   }
+
+  editMode() {
+    this.edit = true;
+    this.gradeForm.controls['name'].setValue(this.grade.name);
+    this.gradeForm.controls['pointsEarned'].setValue(this.grade.pointsEarned);
+    this.gradeForm.controls['totalPoints'].setValue(this.grade.totalPoints);
+  }
 }
