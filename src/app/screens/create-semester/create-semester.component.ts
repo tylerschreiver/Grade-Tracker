@@ -41,7 +41,7 @@ export class CreateSemesterComponent implements OnInit {
       name: ['', Validators.required],
       hours: ['', Validators.required],
       scaleType: ['', Validators.required],
-      scale: ['', Validators.required],
+      gradeScale: ['', Validators.required],
       gradeGroups: ['', Validators.required]
     })
     for(let i = 2014; i < 2035; i++) { this.yearsAvailable.push(i); }
@@ -64,7 +64,7 @@ export class CreateSemesterComponent implements OnInit {
 
   receiveScale(e) {
     this.isScaleDone = true;
-    this.newCourseForm.controls['scale'].setValue(e);
+    this.newCourseForm.controls['gradeScale'].setValue(e);
     this.courseObject = new Course(this.newCourseForm.value);
   }
 

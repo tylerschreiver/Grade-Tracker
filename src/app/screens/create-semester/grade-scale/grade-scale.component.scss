@@ -2,6 +2,9 @@ input {
   display: inline-block;
   margin-right: 15px;
   margin-left: 5px;
+  padding-right: 0;
+  position: relative;
+  width: 90%;
 }
 
 .section {
@@ -12,9 +15,9 @@ input {
 
 .help-text {
     margin: auto;
-    width: 370px;
     display: block;
     font-style: italic;
+    text-align: center;
     margin-bottom: 10px;
 }
 

@@ -1,10 +1,11 @@
-import { Component, OnInit, Input, Output, EventEmitter, ViewChildren, QueryList } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ViewChildren, QueryList, ViewChild } from '@angular/core';
 import { Course } from '../../../models/course.model';
 import { GradeGroup } from '../../../models/grade-group.model';
 import { Grade } from '../../../models/grade.model';
 import { stripGeneratedFileSuffix } from '@angular/compiler/src/aot/util';
 import { GradeGroupComponent } from '../grade-group/grade-group.component';
 import { DecimalPipe } from '@angular/common';
+import { GradeScaleComponent } from '../../create-semester/grade-scale/grade-scale.component';
 
 @Component({
   selector: 'gt-course',
@@ -18,9 +19,12 @@ export class CourseComponent implements OnInit {
   old: any[] = [];
   cancel: boolean = false;
   groupEdit = false;
+  edit: boolean = false;
   canConfirmNewGroups = false;
+  @ViewChild(GradeScaleComponent) scaleComp: GradeScaleComponent;
   @ViewChildren(GradeGroupComponent) components: QueryList<GradeGroupComponent>;
   @Output('save') save = new EventEmitter();
+  @Output('courseEdit') courseEdit = new EventEmitter();
   constructor() { }
 
   ngOnInit() {
@@ -138,5 +142,15 @@ export class CourseComponent implements OnInit {
       });
       this.changeWeights();
     }
+  }
+
+  beginEdit() {
+    this.isExpanded = false;
+    this.edit = true;
+    this.courseEdit.emit();
+  }
+
+  getScale() {
+    return this.scaleComp.changeScale();
   }
 }

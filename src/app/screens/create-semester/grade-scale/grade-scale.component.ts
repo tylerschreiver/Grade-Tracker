@@ -8,6 +8,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class GradeScaleComponent implements OnInit {
   @Input() type: string;
+  @Input() confirmButton = true;
   @Output('complete') complete = new EventEmitter();
 
   plusMinus = [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1];
