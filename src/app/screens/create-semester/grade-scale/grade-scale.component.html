@@ -134,7 +134,7 @@
           </div>
       </form>
     </div>
-    <div style="height:30px">
+    <div *ngIf="confirmButton" style="height:30px">
       <button [disabled]="!isScaleValid" (click)="confirm()" class="btn confirm">Confirm Scale</button>
     </div>
 </div>

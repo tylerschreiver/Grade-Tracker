@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChildren, QueryList } from '@angular/core';
 import { GradeReceiverService } from '../../services/grade-receiver.service';
 import { Semester } from '../../models/semester.model';
 import { ActivatedRoute } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
+import { CourseComponent } from './course/course.component';
+import { Course } from '../../models/course.model';
 
 @Component({
   selector: 'gt-semester-detail',
@@ -14,6 +16,10 @@ export class SemesterDetailComponent {
   id: any;
   uid: string;
   errorMessage: string;
+  courseBeingEditted = false;
+  courseToEditIndex: number;
+  courseToEdit: any;
+  @ViewChildren(CourseComponent) components: QueryList<CourseComponent>;
 
   constructor(public GradeReceiver: GradeReceiverService,
               public route: ActivatedRoute,
@@ -43,5 +49,34 @@ export class SemesterDetailComponent {
     setTimeout(() => {
       document.getElementsByClassName('changes-saved')[0].classList.remove('block');
     },3000);
+  }
+
+  courseEditing(courseToEdit) {
+    this.courseBeingEditted = true;
+    this.courseToEditIndex = this.semester.courses.indexOf(courseToEdit);
+    this.courseToEdit = new Course(courseToEdit);
+  }
+
+  editComplete() {
+    let newCourse = this.components.toArray()[this.courseToEditIndex].courseObj;
+    newCourse.gradeScale = this.components.toArray()[this.courseToEditIndex].getScale();
+    this.semester.courses[this.courseToEditIndex] = newCourse;
+    this.saveSemester();
+    this.courseToEditIndex = null;
+    this.courseBeingEditted = false;
+  }
+
+  cancelEdittingCourse() {
+    this.components.toArray()[this.courseToEditIndex].courseObj = this.courseToEdit;
+    this.components.toArray()[this.courseToEditIndex].edit = false;
+    this.courseToEditIndex = null;
+    this.courseBeingEditted = false;
+  }
+
+  get canSaveEdittedCourse() {
+    return this.courseToEditIndex != null && 
+           this.courseBeingEditted == true && 
+           this.components.toArray()[this.courseToEditIndex].scaleComp &&
+           this.components.toArray()[this.courseToEditIndex].scaleComp.isScaleValid
   }
 }

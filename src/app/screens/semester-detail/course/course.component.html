@@ -5,7 +5,7 @@
     <div class="col-3">{{ courseObj.averageInCourse()*100 | number:'.1-3' }}%</div>
 
     <div *ngIf="!edit" class="col-1">{{ courseObj.hours }}</div>
-    <div *ngIf="edit" class="col-1"><input [(ngModel)]="courseObj.hours"></div>
+    <div *ngIf="edit" class="col-1"><input type="number" [(ngModel)]="courseObj.hours"></div>
 
     <span *ngIf="!edit" class="buttons">
       <i (click)="beginEdit()" class="fa fa-pencil"></i>
@@ -21,7 +21,7 @@
       </select>
     </div>
 
-    <gt-grade-scale *ngIf="edit" [type]="courseObj.scaleType" [scale]="courseObj.gradeScale"></gt-grade-scale>
+    <gt-grade-scale *ngIf="edit" (complete)="courseObj.gradeScale = $event" [type]="courseObj.scaleType" [scale]="courseObj.gradeScale" [confirmButton]="false"></gt-grade-scale>
 </div>
 <div *ngIf="isExpanded" class="grade-groups">
   <div class="heading">

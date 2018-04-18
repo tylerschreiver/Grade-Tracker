@@ -4,8 +4,13 @@
     <div class="col-4 header-text">Course Name</div>
     <div class="col-3 header-text">Current Grade</div>
     <div class="col-1 header-text">Hours</div>
+    <span class="buttons" *ngIf="courseBeingEditted">
+        <i (click)="cancelEdittingCourse()" class="fa fa-times"></i>
+        <i *ngIf="canSaveEdittedCourse" (click)="editComplete()" class="fa fa-check"></i>
+      </span>
   </div>
+
   <div class="course-wrapper" *ngFor="let course of semester.courses">
-    <gt-course (save)="saveCourse($event, course)" [course]="course"></gt-course>
+    <gt-course (save)="saveCourse($event, course)" (courseEdit)="courseEditing(course)" [course]="course"></gt-course>
   </div>
 </div>
