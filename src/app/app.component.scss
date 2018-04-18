@@ -5,7 +5,7 @@
 
 .title {
     background-color: #292929;
-    width: 232px;
+    width: 245px;
     border-radius: 5px;
     padding: 0px 15px;
     padding-top: 10px;
@@ -14,4 +14,10 @@
     font-size: 40px;
     font-family: impact;
     cursor: pointer;
+}
+
+.logout {
+    top: 10px;
+    right: 10px;
+    position: absolute;
 }

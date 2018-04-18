@@ -32,3 +32,24 @@
 .header-text {
     font-size: 18px;
 }
+
+.save {
+    margin-left: 15px;
+    margin-top: 5px;
+}
+
+.changes-saved {
+    color: white;
+    padding-bottom: 15px;
+    display: none;
+}
+
+.buttons {
+    float: right;
+}
+
+.fa {
+    color:white;
+    margin-left: 10px !important;
+    cursor: pointer;
+}

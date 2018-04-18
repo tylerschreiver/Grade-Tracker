@@ -1,12 +1,13 @@
 .semester {
     height: 150px;
-    display: inline-block;
+    display: inline-grid;
     width: 250px;
     margin: 10px;
     background-color: #B8B8B8;
     border: 1px solid black;
     border-radius: 5px;
     cursor: pointer;
+    position: relative;
     transition: box-shadow .3s;
 }
 
@@ -17,16 +18,20 @@
 .header {
     text-align: center;
     border-top-left-radius: 5px;
+    color: #B8B8B8;
     border-top-right-radius: 5px;
     width: 100%;
     height: 20px;
     border-bottom: 1px solid black;
     background-color: rebeccapurple;
+    font-size: 18px;
+    padding: 2px 0px;
 }
 
 .body {
     padding: 0px 10px;
     height: 130px;
+    position: relative;
 }
 
 .courses {
@@ -35,4 +40,33 @@
 
 .course {
     margin-left: 15px;
+}
+
+.fa-plus {
+  font-size: 40px;
+  text-align: center;
+}
+
+.delete {
+    bottom: 3px;
+    position: absolute;
+    right: 3px;
+    border: 1px solid rebeccapurple;
+    display: inline;
+    border-radius: 50%;
+    padding: 1px 4px;
+}
+
+.delete:hover {
+    border-color: #8844CC;
+    .fa-trash {
+        color: #8844CC;
+    }
+}
+
+.delete:active {
+    border-color: #AA55FF;
+    .fa-trash {
+        color: #AA55FF;
+    }
 }

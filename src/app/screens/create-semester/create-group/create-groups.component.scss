@@ -1,0 +1,122 @@
+.menu {
+    background-color: #B8B8B8;
+    width: 95%;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+.bottom-pad {
+  padding-bottom: 10px;
+}
+
+input {
+  display: inline;
+  margin: auto;
+}
+
+.pair {
+  display: inline-block;
+  text-align: center;
+  padding-left: 5px;
+  margin-bottom: 10px;
+}
+
+.pad-left {
+  padding-left: 10px;
+  text-align: center;
+}
+
+.hundo {
+  width: calc(100% - 36px);
+  margin: 0 10px;
+}
+
+.input-num {
+  min-width: 40px !important;
+  max-width: 100px !important;
+}
+
+.all-blocks {
+  display: table-cell;
+  width: 95%;
+}
+
+.third {
+  width: 33%;
+  display: inline-block;
+  text-align: center;
+}
+
+h1 {
+  margin: 0px;
+  font-size: 20px;
+  padding: 5px 0px 10px 5px;
+}
+
+.form-group {
+  padding-bottom: 10px;
+}
+
+.right {
+  float: right;
+}
+
+.header {
+  BORDER: 1px solid black;
+  border-top-left-radius: 5px;
+  margin: 0 10px;
+  border-top-right-radius: 5px;
+}
+
+.form-group {
+  border-left: 1px solid black;
+  margin-left: 10px;
+  margin-right: 10px;
+  border-right: 1px solid black;
+  padding: 5px 0px;
+}
+
+.subtitle {
+  color: white;
+  font-size: 20px;
+  margin-bottom: -10px;
+  margin-top: 5px;
+}
+
+.fa-pencil {
+  cursor: pointer;
+  font-size: 18px;
+  padding: 4px;
+}
+
+.edit {
+  width: 40px;
+  display: table-cell;
+  height: 100%;
+  text-align: center;
+  border-left: 1px solid black;
+  vertical-align: middle;
+  padding: 0;
+}
+
+.save-group {
+  float: right;
+  margin-top: 10px;
+}
+
+.finished-block {
+  display: inline-block;
+  line-height: 2;
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 5px 10px;
+}
+
+.groups:last-of-type {
+  gt-create-grade-group {
+    .group {
+      border-bottom: 1px solid black;
+    }
+  }
+}

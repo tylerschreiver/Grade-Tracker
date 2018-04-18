@@ -10,24 +10,25 @@
     padding-left: 10px;
 }
 
-.fa-chevron-down {
-    margin-left: 10px;
-}
-
-.fa-chevron-up {
-    margin-left: 10px;
-}
-
 .submenu {
     margin-right: 5px;
 }
 
-.fa-plus {
+.fa {
     margin-left: 10px;
 }
 
 .fa {
     cursor: pointer;
+}
+
+.white {
+    color: white;
+}
+
+.right {
+    float: right;
+    margin-right: 10px;
 }
 
 .heading {
@@ -50,4 +51,15 @@
 
 .grade:last-child {
   border-bottom: none;
+}
+
+input {
+    width: 80%;
+}
+
+
+.right-button {
+    float: right;
+    margin-top: -2px;
+    padding-right: 5px;
 }

@@ -1,0 +1,35 @@
+<div *ngIf="!finish" class="menu bottom-pad">
+  <h1>Create Grade Groups</h1>
+  <div class="pair">
+    <label>Number of Grade Groups: </label>
+    <input class="input-num" (keyup)="createGroups()" [(ngModel)]="numGradeGroups" type="number">
+  </div>
+  <div *ngIf="numGradeGroups > 0" class="header">
+    <div class="col-4"><div class="pad-left">Grade Group Name</div></div><!-- Prevents white space from fucking the spacing up
+ --><div class="col-1"></div><!--     
+ --><div class="col-2"><div class="pad-left">Weight</div></div><!-- kinda dumb but oh well
+ --><div class="col-1"></div><!--     
+ --><div class="col-2"><div class="pad-left"># of Grades <i>(optional)</i></div></div>
+  </div>
+  <div class="groups" *ngFor="let group of groups">
+    <gt-create-grade-group [class.bottom]="group == groups[groups.length-1]" (valid)="receiveEvent($event)" [id]="group.id" [groupInfo]="group"></gt-create-grade-group>
+  </div>
+</div>
+
+<button *ngIf="groups.length && !finish" [disabled]="!canCreateGroups" (click)="finishGradeGroups()" class="btn save-group">Save Grade Groups</button>
+
+<div class="subtitle" *ngIf="finish">Finished Grade Groups</div>
+<div *ngIf="finish" class="menu">
+  <div style="display:table">
+    <div class="all-blocks">
+      <div class="finished-block" *ngFor="let group of groups">
+          <div class="name">Name: {{group.name}}</div>
+          <div class="weight">Weight: {{group.weight}}</div>
+        </div>
+    </div>
+    <div class="edit">
+      <i (click)="finish = false;" class="fa fa-pencil"></i>
+    </div>
+  </div>
+
+</div>

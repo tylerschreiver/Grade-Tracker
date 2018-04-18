@@ -14,12 +14,19 @@
     margin-right: 5px;
 }
 
+.white {
+    color:white;
+}
 .fa-plus {
     margin-left: 10px;
 }
 
 .fa {
     cursor: pointer;
+}
+
+.right {
+    margin-right: 10px;
 }
 
 .grade-groups {
@@ -46,4 +53,34 @@
 
 .group:last-child {
     border-bottom: none;
+}
+
+.fa {
+    color:rebeccapurple;
+    margin-left: 10px !important;
+    cursor: pointer;
+}
+
+.help-text {
+    color:red;
+    border-bottom: 1px solid black;
+    font-style: italic;
+    text-align: center;
+    padding: 5px;
+}
+
+input {
+    position: relative;
+    width: calc(100% - 30px);
+    min-width: 25px;
+}
+
+.scale {
+    margin-top: 15px;
+    margin-bottom: 10px;
+}
+
+.ellipses {
+    text-overflow: ellipsis;
+    overflow: hidden;
 }

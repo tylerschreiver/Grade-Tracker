@@ -1,10 +1,19 @@
-<div class="menu">
+<div *ngIf="semester" class="menu">
+  <div class="changes-saved">Changes have been saved</div>
   <div class="header">
     <div class="col-4 header-text">Course Name</div>
     <div class="col-3 header-text">Current Grade</div>
     <div class="col-1 header-text">Hours</div>
+    <span class="buttons" *ngIf="courseBeingEditted || courseBeingAdded">
+      <i (click)="cancelEdittingCourse()" class="fa fa-times"></i>
+      <i *ngIf="canSaveEdittedCourse || canSaveAddedCourse" (click)="editComplete()" class="fa fa-check"></i>
+    </span>
+    <span *ngIf="!courseBeingEditted && !courseBeingAdded" class="buttons">
+      <i (click)="addCourse()" class="fa fa-plus"></i>
+    </span>
   </div>
-  <div class="course-wrapper" *ngFor="let class of semester.courses">
-    <gt-course [course]="class"></gt-course>
+
+  <div class="course-wrapper" *ngFor="let course of semester.courses">
+    <gt-course (deleteCourse)="deleteCourse(course)" (save)="saveCourse($event, course)" (courseEdit)="courseEditing(course)" [course]="course"></gt-course>
   </div>
 </div>
