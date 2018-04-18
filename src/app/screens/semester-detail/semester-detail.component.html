@@ -4,10 +4,13 @@
     <div class="col-4 header-text">Course Name</div>
     <div class="col-3 header-text">Current Grade</div>
     <div class="col-1 header-text">Hours</div>
-    <span class="buttons" *ngIf="courseBeingEditted">
-        <i (click)="cancelEdittingCourse()" class="fa fa-times"></i>
-        <i *ngIf="canSaveEdittedCourse" (click)="editComplete()" class="fa fa-check"></i>
-      </span>
+    <span class="buttons" *ngIf="courseBeingEditted || courseBeingAdded">
+      <i (click)="cancelEdittingCourse()" class="fa fa-times"></i>
+      <i *ngIf="canSaveEdittedCourse || canSaveAddedCourse" (click)="editComplete()" class="fa fa-check"></i>
+    </span>
+    <span *ngIf="!courseBeingEditted && !courseBeingAdded" class="buttons">
+      <i (click)="addCourse()" class="fa fa-plus"></i>
+    </span>
   </div>
 
   <div class="course-wrapper" *ngFor="let course of semester.courses">

@@ -17,6 +17,7 @@ export class SemesterDetailComponent {
   uid: string;
   errorMessage: string;
   courseBeingEditted = false;
+  courseBeingAdded = false;
   courseToEditIndex: number;
   courseToEdit: any;
   @ViewChildren(CourseComponent) components: QueryList<CourseComponent>;
@@ -58,19 +59,26 @@ export class SemesterDetailComponent {
   }
 
   editComplete() {
-    let newCourse = this.components.toArray()[this.courseToEditIndex].courseObj;
-    newCourse.gradeScale = this.components.toArray()[this.courseToEditIndex].getScale();
-    this.semester.courses[this.courseToEditIndex] = newCourse;
-    this.saveSemester();
-    this.courseToEditIndex = null;
-    this.courseBeingEditted = false;
+    if (this.courseBeingAdded) this.addCourseComplete();
+    else {
+      let newCourse = this.components.toArray()[this.courseToEditIndex].courseObj;
+      newCourse.gradeScale = this.components.toArray()[this.courseToEditIndex].getScale();
+      this.semester.courses[this.courseToEditIndex] = newCourse;
+      this.saveSemester();
+      this.courseToEditIndex = null;
+      this.courseBeingEditted = false;
+    }
+
   }
 
   cancelEdittingCourse() {
-    this.components.toArray()[this.courseToEditIndex].courseObj = this.courseToEdit;
-    this.components.toArray()[this.courseToEditIndex].edit = false;
-    this.courseToEditIndex = null;
-    this.courseBeingEditted = false;
+    if (this.courseBeingAdded) this.cancelAddingCourse();
+    else {
+      this.components.toArray()[this.courseToEditIndex].courseObj = this.courseToEdit;
+      this.components.toArray()[this.courseToEditIndex].edit = false;
+      this.courseToEditIndex = null;
+      this.courseBeingEditted = false;
+    }
   }
 
   get canSaveEdittedCourse() {
@@ -78,5 +86,44 @@ export class SemesterDetailComponent {
            this.courseBeingEditted == true && 
            this.components.toArray()[this.courseToEditIndex].scaleComp &&
            this.components.toArray()[this.courseToEditIndex].scaleComp.isScaleValid
+  }
+
+  get canSaveAddedCourse() {
+    let comp = this.components.toArray()[0]; 
+    if (comp && comp.scaleComp) {
+      comp.courseObj.gradeScale = comp.scaleComp.changeScale();
+      let valid = comp.courseObj.name && 
+                  comp.courseObj.hours && 
+                  comp.courseObj.scaleType && 
+                  comp.courseObj.gradeScale && 
+                  comp.scaleComp.isScaleValid && 
+                  comp.scaleComp.isConfirmed;
+      return valid;
+    }
+    else return false
+  }
+
+  addCourse() {
+    this.courseBeingAdded = true;
+    let courses = this.semester.courses;
+    this.semester.courses = [];
+    this.semester.courses.push(new Course({}));
+    courses.forEach((course) => {
+      this.semester.courses.push(course);
+    });
+    setTimeout(() => {
+      this.components.toArray()[0].edit = true;
+    },1);
+  }
+
+  cancelAddingCourse() {
+    this.semester.courses.splice(0,1);
+    this.courseBeingAdded = false;
+  }
+
+  addCourseComplete() {
+    this.semester.courses[0] = this.components.toArray()[0].courseObj;
+    this.courseBeingAdded = false;
+    this.saveSemester();
   }
 }
