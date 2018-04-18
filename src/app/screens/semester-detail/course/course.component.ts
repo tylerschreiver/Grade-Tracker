@@ -25,6 +25,7 @@ export class CourseComponent implements OnInit {
   @ViewChildren(GradeGroupComponent) components: QueryList<GradeGroupComponent>;
   @Output('save') save = new EventEmitter();
   @Output('courseEdit') courseEdit = new EventEmitter();
+  @Output('deleteCourse') deleteCourse = new EventEmitter();
   constructor() { }
 
   ngOnInit() {
@@ -152,5 +153,9 @@ export class CourseComponent implements OnInit {
 
   getScale() {
     return this.scaleComp.changeScale();
+  }
+
+  delete() {
+    this.deleteCourse.emit();
   }
 }

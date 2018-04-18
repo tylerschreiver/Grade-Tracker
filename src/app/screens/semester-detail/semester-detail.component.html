@@ -14,6 +14,6 @@
   </div>
 
   <div class="course-wrapper" *ngFor="let course of semester.courses">
-    <gt-course (save)="saveCourse($event, course)" (courseEdit)="courseEditing(course)" [course]="course"></gt-course>
+    <gt-course (deleteCourse)="deleteCourse(course)" (save)="saveCourse($event, course)" (courseEdit)="courseEditing(course)" [course]="course"></gt-course>
   </div>
 </div>

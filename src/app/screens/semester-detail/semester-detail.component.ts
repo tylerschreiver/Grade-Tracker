@@ -126,4 +126,12 @@ export class SemesterDetailComponent {
     this.courseBeingAdded = false;
     this.saveSemester();
   }
+
+  deleteCourse(course) {
+    if (confirm("Are you sure you want to delete " + course.name)) {
+      let index = this.semester.courses.indexOf(course);
+      this.semester.courses.splice(index,1);
+      this.saveSemester();
+    }
+  }
 }
