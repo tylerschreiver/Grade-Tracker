@@ -1,6 +1,6 @@
 <div *ngIf="!edit && groupObj">
   <div class="col-3 spacer">{{ groupObj.name }}</div>
-  <div class="col-2">{{ groupObj.weight }}</div>
+  <div class="col-1">{{ groupObj.weight }}</div>
   <div class="col-1"></div>
   <span *ngIf="gradeObjs.length">
     <div class="col-2">{{ groupObj.average()*100 | number:'.1-3' }}%</div>

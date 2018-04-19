@@ -2,7 +2,7 @@
   <h1>Create Grade Groups</h1>
   <div class="pair">
     <label>Number of Grade Groups: </label>
-    <input class="input-num" (keyup)="createGroups()" [(ngModel)]="numGradeGroups" type="number">
+    <input class="input-num" (keyup)="createGroups()" min="1" [(ngModel)]="numGradeGroups" type="number">
   </div>
   <div *ngIf="numGradeGroups > 0" class="header">
     <div class="col-4"><div class="pad-left">Grade Group Name</div></div><!-- Prevents white space from fucking the spacing up

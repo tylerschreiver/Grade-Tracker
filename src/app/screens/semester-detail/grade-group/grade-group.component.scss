@@ -63,3 +63,18 @@ input {
     margin-top: -2px;
     padding-right: 5px;
 }
+
+.space {
+    min-width: 15px;
+}
+
+.weight {
+    min-width: 50px;
+}
+
+@media only screen and (max-width:690px) {
+    .fa {
+        margin-left: 5px;
+    }
+
+}
