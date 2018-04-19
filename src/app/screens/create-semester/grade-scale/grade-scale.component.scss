@@ -1,0 +1,94 @@
+input {
+  display: inline-block;
+  margin-right: 15px;
+  margin-left: 5px;
+  padding-right: 0;
+  position: relative;
+  width: 90%;
+}
+
+.section {
+  margin: auto;
+  margin-bottom: 10px;
+  display: block;
+}
+
+.help-text {
+    margin: auto;
+    display: block;
+    font-style: italic;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.confirm {
+  float: right;
+}
+
+.outer {
+  text-align: center;
+}
+
+.subtitle {
+  color: white;
+  font-size: 20px;
+}
+
+.letter {
+  width: 22px;
+  display: inline-block;
+}
+
+.letters {
+  border-bottom: 1px solid black;
+}
+
+.finished-scale {
+  width: 95%;
+  background-color: #B8B8B8;
+  border-radius: 5px;
+  display: table;
+}
+
+.finished-letter-4 {
+  width: 25%;
+  display: inline-block;
+  padding: 2px 0px;
+  text-align: center;
+}
+
+.finished-letter-8 {
+  width: 12.5%;
+  padding: 2px 0px;
+  display: inline-block;
+  text-align: center;
+}
+
+.finished-letter-12 {
+  width: 8.3%;
+  padding: 2px 0px;
+  display: inline-block;
+  text-align: center;
+}
+
+.scale {
+  width: 94%;
+  display: table-cell;
+
+}
+
+.edit {
+  width: 5%;
+  display: table-cell;
+  height: 100%;
+  text-align: center;
+  border-left: 1px solid black;
+  vertical-align: middle;
+  padding: 0;
+}
+
+.fa-pencil {
+  cursor: pointer;
+  font-size:18px;
+  padding: 4px;
+}

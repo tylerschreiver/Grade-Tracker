@@ -1,0 +1,119 @@
+.row {
+    margin: 0;
+}
+
+.col-1 {
+    width: 10%;
+    display: inline-block;
+}
+
+.col-2 {
+    width: 20%;
+    display: inline-block;
+}
+
+.col-3 {
+    width: 30%;
+    display: inline-block;
+}
+
+.col-4 {
+    width: 40%;
+    display: inline-block;
+}
+
+.col-5 {
+    width: 50%;
+    display: inline-block;
+}
+
+.col-6 {
+    width: 60%;
+    display: inline-block;
+}
+
+.col-7 {
+    width: 70%;
+    display: inline-block;
+}
+
+.col-8 {
+    width: 80%;
+    display: inline-block;
+}
+
+.col-9 {
+    width: 90%;
+    display: inline-block;
+}
+.col-10 {
+    width: 100%;
+    display: inline-block;
+}
+
+.fa {
+    color: rebeccapurple
+}
+
+.btn {
+    background-color: rebeccapurple;
+    border: 1px solid white;
+    padding: 6px 12px;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn:hover {
+  background-color: #8844CC;
+}
+
+.btn:active {
+  background-color: #AA55FF;
+}
+
+
+.menu {
+  background-color: #292929;
+}
+
+input {
+  display: block;
+  border-radius: 5px;
+  border: 1px solid #babbc7;
+  background-color: #f8fafc;
+  padding: 2px 8px 0 8px;
+  height: 20px;
+}
+
+button:disabled,
+button[disabled],
+button[disabled]:hover,
+button[disabled]:active {
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
+  cursor: not-allowed;
+}
+
+
+
+select {
+  border-radius: 5px;
+  border: 1px solid #babbc7;
+  background-color: #f8fafc;
+  padding: 2px 8px 0 8px;
+  height: 24px;
+}
+
+.block {
+  display: block !important;
+}
+
+.white {
+    color: white;
+}
+
+.right {
+    float: right;
+}

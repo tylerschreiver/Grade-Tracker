@@ -1,0 +1,65 @@
+<h1>Create Semester</h1>
+
+<div class="menu">
+  <form [formGroup]="semesterForm">
+    <div class="form-group">
+      <label>Session: </label>
+      <select formControlName="session">
+        <option value="Fall">Fall</option>
+        <option value="Spring">Spring</option>
+        <option value="Summer">Summer</option>
+        <option value="Winter">Winter</option>
+      </select>
+
+      <label style="margin-left: 30px;">Year: </label>
+      <select formControlName="year">
+        <option *ngFor="let year of yearsAvailable" value="{{year}}">{{ year }}</option>
+      </select>
+    </div>
+  </form>
+
+  <div *ngIf="semesterForm.controls['courses'].value.length">
+    <div class="subtitle">Completed Courses</div>
+    <div class="previews" *ngFor="let course of semesterForm.controls['courses'].value">
+      <gt-course-preview [course]="course"></gt-course-preview>
+    </div>
+  </div>
+
+  <button (click)="newCourse()" *ngIf="!creatingCourse" class="btn">Create New Course</button>
+  <div class="course-creator" *ngIf="creatingCourse">
+    <form [formGroup]="newCourseForm">
+      <div class="form-group">
+        <div class="row">
+          <div class="col-3">
+            <label>Course Name</label>
+            <input class="hundo" formControlName="name">
+          </div><!--
+       --><div class="col-1"></div><!--
+       --><div class="col-2">
+            <label>Hours</label>
+            <select formControlName="hours" class="block hundo">
+              <option *ngFor="let num of [1,2,3,4,5]" value="{{num}}">{{ num }}</option>
+            </select>
+          </div><!--
+       --><div class="col-1"></div><!--
+       --><div class="col-3">
+            <label>Scale Type</label>
+            <select formControlName="scaleType" class="block hundo">
+              <option value="letter">Letter (eg: 'A', 'B', 'C')</option>
+              <option value="plusMinus">Plus Minus (eg: 'A+', 'A', 'A-')</option>
+              <option value="plus">Plus (eg: 'A+', 'A', 'B+', 'B')</option>
+            </select>
+          </div>
+        </div>
+        <div *ngIf="newCourseForm.controls['scaleType'].value !== ''" class="row scale">
+          <gt-grade-scale [type]="newCourseForm.controls['scaleType'].value" (complete)="receiveScale($event)"></gt-grade-scale>
+        </div>
+        <div *ngIf="isScaleDone" class="row">
+          <gt-create-groups (complete)="receiveGroups($event)"></gt-create-groups>
+        </div>
+        <button (click)="saveCourse(courseObject)" *ngIf="isScaleDone && areGroupsDone && newCourseForm.valid" class="btn">Save Course</button>
+      </div>
+    </form>
+  </div>
+  <button [disabled]="isSaving" *ngIf="semesterForm.valid" (click)="saveSemester()" class="btn">Save Semester</button>
+</div>

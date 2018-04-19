@@ -6,14 +6,18 @@ export class Course {
     hours: number;
     scaleType: scaleType; // letter: 4, plus: 8, plusMinus: 12
     gradeScale: number[]; 
-    gradeGroups: GradeGroup[];
+    gradeGroups: GradeGroup[] = [];
 
     constructor(json: any) {
         if (json.name) this.name = json.name;
         if (json.hours) this.hours = json.hours;
         if (json.scaleType) this.scaleType = json.scaleType;
         if (json.gradeScale) this.gradeScale = json.gradeScale;
-        if (json.gradeGroups) this.gradeGroups = json.gradeGroups;
+        if (json.gradeGroups) {
+            json.gradeGroups.forEach((group) => {
+                this.gradeGroups.push(new GradeGroup(group));
+            })
+        }
     }
 
     averageInCourse() {
@@ -21,6 +25,7 @@ export class Course {
         let totalPossible = 0;
         this.gradeGroups.forEach((group: GradeGroup) => {
             totalPoints += group.pointsTowardsTotal();
+            if (group.grades.length > 0)
             totalPossible += group.weight;
         });
         return totalPoints/totalPossible;

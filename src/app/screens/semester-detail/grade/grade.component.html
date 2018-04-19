@@ -1,0 +1,22 @@
+<div *ngIf="!edit">
+  <div class="col-3 spacer">{{ grade.name }}</div>
+  <div class="col-2">{{ grade.pointsEarned }}</div>
+  <div class="col-1"></div>
+  <div class="col-2">{{ grade.totalPoints }}</div>
+  <span class="right">
+    <i (click)="editMode()" class="fa fa-pencil"></i>
+    <i (click)="deleteGrade()" class="fa fa-trash"></i>
+  </span>
+</div>
+
+<div *ngIf="edit">
+  <form [formGroup]="gradeForm">
+    <div class="form-group">
+        <div class="col-3 spacer"><input formControlName="name"></div>
+        <div class="col-2"><input type="number" min=0 formControlName="pointsEarned"></div>
+        <div class="col-1"></div>
+        <div class="col-2"><input type="number" min=1 formControlName="totalPoints"></div>
+        <span class="right-button"><button (click)="addGrade()" [disabled]="!gradeForm.valid" class="btn">Confirm</button></span>
+    </div>
+  </form>
+</div>

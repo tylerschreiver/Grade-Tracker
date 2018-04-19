@@ -1,0 +1,95 @@
+.menu {
+    background-color: #292929;
+    margin-top: 10px;
+    margin-left: 15px;
+    border-radius: 5px;
+    width: 80%;
+    padding: 15px;
+    padding-bottom: 30px;
+}
+
+.course-wrapper {
+    width: 80%;
+    background-color: #B8B8B8;
+    padding: 5px 10px;
+    border: 1px solid white;
+}
+
+.course-wrapper:last-child {
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.header {
+    width: 80%;
+    background-color: rebeccapurple;
+    padding: 5px 10px;
+    border: 1px solid white;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.header-text {
+    font-size: 18px;
+}
+
+.save {
+    margin-left: 15px;
+    margin-top: 5px;
+}
+
+.changes-saved {
+    color: white;
+    padding-bottom: 15px;
+    display: none;
+}
+
+.buttons {
+    float: right;
+}
+
+.fa {
+    color:white;
+    margin-left: 10px !important;
+    cursor: pointer;
+}
+
+.grade {
+    min-width: 45px;
+}
+
+@media only screen and (max-width:825px) {
+    .menu {
+        width: 85%;
+    }
+    .course-wrapper {
+        width: 85%;
+    }
+    .header {
+        width: 85%;
+    }
+}
+
+@media only screen and (max-width:690px) {
+    .menu {
+        width: 90%;
+    }
+    .course-wrapper {
+        width: 90%;
+    }
+    .header {
+        width: 90%;
+    }
+}
+
+@media only screen and (max-width:550px) {
+    .menu {
+        width: 95%;
+    }
+    .course-wrapper {
+        width: 95%;
+    }
+    .header {
+        width: 95%;
+    }
+}

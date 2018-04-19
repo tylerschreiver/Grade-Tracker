@@ -1,15 +1,22 @@
-import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, AfterViewInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
+import { AuthService } from './services/auth.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  constructor(public router: Router) { }
-  title = 'Grade Tracker';
+  constructor(public router: Router,
+              private auth: AuthService) {}
+  title = 'Barely Passing';
+
   navToHome() {
-    this.router.navigate(['home']);
+    if (this.auth.isLoggedIn()) this.router.navigate(['home']);
+  }
+
+  logout() {
+    this.auth.logout();
   }
 }
