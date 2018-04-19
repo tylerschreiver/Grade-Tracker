@@ -1,8 +1,8 @@
 <div *ngIf="courseObj" class="course-wrapper">
-    <div *ngIf="!edit" class="col-4">{{ courseObj.name }}</div>
+    <div *ngIf="!edit" class="col-4 ellipses">{{ courseObj.name }}</div>
     <div *ngIf="edit" class="col-4"><input class="ellipses" [(ngModel)]="courseObj.name"></div>
 
-    <div class="col-3">
+    <div class="col-2 grade">
       <span *ngIf="courseObj.gradeGroups.length">
         {{ courseObj.averageInCourse()*100 | number:'.1-3' }}%
       </span>
@@ -17,6 +17,7 @@
       <i *ngIf="!isExpanded" (click)="isExpanded = true" class="fa fa-chevron-down"></i>
       <i *ngIf="isExpanded" (click)="isExpanded = false" class="fa fa-chevron-up"></i>
     </span>
+
     <div class="scale" *ngIf="edit">
       <label>Scale Type</label>
       <select [(ngModel)]="courseObj.scaleType">
@@ -30,9 +31,9 @@
 </div>
 <div *ngIf="isExpanded" class="grade-groups">
   <div class="heading">
-    <div class="col-3 spacer">Grade Group Name</div>
-    <div class="col-2">Weight</div>
-    <div class="col-1"></div>
+    <div class="col-3"><span class="spacer">Grade Group Name</span></div>
+    <div class="col-1 weight">Weight</div>
+    <div class="col-1 space"></div>
     <div class="col-2">Average Grade</div>
     <span class="right">
       <i *ngIf="!cancel && !groupEdit" (click)="newGradeGroup()" class="fa fa-plus white"></i>

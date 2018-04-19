@@ -53,3 +53,44 @@
     margin-left: 10px !important;
     cursor: pointer;
 }
+
+.grade {
+    min-width: 45px;
+}
+
+@media only screen and (max-width:550px) {
+    .menu {
+        width: 95%;
+    }
+    .course-wrapper {
+        width: 95%;
+    }
+    .header {
+        width: 95%;
+    }
+}
+
+@media only screen and (max-width:690px) {
+    .menu {
+        width: 90%;
+    }
+    .course-wrapper {
+        width: 90%;
+    }
+    .header {
+        width: 90%;
+    }
+}
+
+@media only screen and (max-width:825px) {
+    .menu {
+        width: 85%;
+    }
+    .course-wrapper {
+        width: 85%;
+    }
+    .header {
+        width: 85%;
+    }
+}
+
