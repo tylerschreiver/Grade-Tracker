@@ -30,4 +30,12 @@ export class Course {
         });
         return totalPoints/totalPossible;
     }
+
+    get hasAverage() {
+        let hasAvg = false;
+        this.gradeGroups.forEach((group) => {
+            if (group.numGrades > 0) hasAvg = true;
+        });
+        return hasAvg;
+    }
 }
