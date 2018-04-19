@@ -6,6 +6,7 @@ import { stripGeneratedFileSuffix } from '@angular/compiler/src/aot/util';
 import { GradeGroupComponent } from '../grade-group/grade-group.component';
 import { DecimalPipe } from '@angular/common';
 import { GradeScaleComponent } from '../../create-semester/grade-scale/grade-scale.component';
+import { SSL_OP_NO_COMPRESSION } from 'constants';
 
 @Component({
   selector: 'gt-course',
@@ -22,6 +23,7 @@ export class CourseComponent implements OnInit {
   edit: boolean = false;
   canConfirmNewGroups = false;
   allowButtons = true;
+  numNewGroups = 0;
   @ViewChild(GradeScaleComponent) scaleComp: GradeScaleComponent;
   @ViewChildren(GradeGroupComponent) components: QueryList<GradeGroupComponent>;
   @Output('save') save = new EventEmitter();
@@ -52,6 +54,7 @@ export class CourseComponent implements OnInit {
   }
 
   newGradeGroup() {
+    this.numNewGroups++;
     this.cancel = true;
     let temp = this.gradeGroups;
     this.gradeGroups = [];
@@ -61,10 +64,22 @@ export class CourseComponent implements OnInit {
       group.id = i;
       this.gradeGroups.push(group);
     });
+
+    if (this.numNewGroups > 1) {
+      setTimeout(() => {
+        let i = 0;
+        this.components.toArray().forEach((comp) => {
+          i++;
+          if (i == this.numNewGroups) comp.parentalPermission = true;
+          else comp.parentalPermission = false;
+        });
+      },1)
+    }
   }
 
   cancelNewGradeGroup() {
     this.cancel = false;
+    this.numNewGroups = 0;
     this.gradeGroups = this.gradeGroups.slice(1, this.gradeGroups.length);
     this.gradeGroups.forEach((group) => {
       group.id = group.id - 1;
@@ -113,6 +128,7 @@ export class CourseComponent implements OnInit {
 
 
   confirmNewGradeGroup() {
+    this.numNewGroups = 0;
     this.cancel = false;
     let i = 0;
     this.components.forEach((comp) => {
@@ -129,11 +145,11 @@ export class CourseComponent implements OnInit {
   }
 
   deleteGroup(e) {
-    if (confirm("Are you sure you want to delete this grade group?")) {
+    if (confirm("Are you sure you want to delete " + e.name +  "?")) {
       this.cancel = true;
       let temp = [];
       this.gradeGroups.forEach((group) => {
-        if (group.group.name != e.name && group.group.weight != e.weight) {
+        if (group.group.name != e.name || group.group.weight != e.weight) {
           temp.push(group);
         }
       });
@@ -158,5 +174,13 @@ export class CourseComponent implements OnInit {
 
   delete() {
     this.deleteCourse.emit();
+  }
+
+  receiveName() {
+    let valid = true;
+    this.components.toArray().forEach((comp) => {
+      if (!comp.groupForm.controls['name'].valid) valid = false;
+    });
+    this.components.toArray()[this.numNewGroups-1].tempDisable = !valid;
   }
 }

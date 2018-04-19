@@ -30,7 +30,7 @@
   <form [formGroup]="groupForm">
     <div class="form-group">
       <div *ngIf="!nameComplete" class="col-3 spacer">
-        <input formControlName="name" type="text">
+        <input (onkeyup)="giveParentName()" formControlName="name" type="text">
       </div>
       <div *ngIf="nameComplete" class="col-3 spacer">
           {{groupForm.controls['name'].value}}
@@ -38,7 +38,7 @@
       <div *ngIf="nameComplete" class="col-2">
         <input (keyup)="change.emit();" max="100" min="0" formControlName="weight" type="number">
       </div>
-      <span *ngIf="!nameComplete" class="right-button"><button (click)="adjustWeights()" [disabled]="!groupForm.controls['name'].valid" class="btn">Next</button></span>
+      <span *ngIf="!nameComplete && parentalPermission" class="right-button"><button (click)="adjustWeights()" [disabled]="!groupForm.controls['name'].valid || tempDisable" class="btn">Next</button></span>
     </div>
   </form>
 </div>

@@ -35,10 +35,10 @@
     <div class="col-1"></div>
     <div class="col-2">Average Grade</div>
     <span class="right">
-      <i *ngIf="!cancel && !groupEdit" (click)="newGradeGroup()" class="fa fa-plus white"></i>
-
       <i *ngIf="groupEdit" (click)="cancelEdit()" class="fa fa-times white"></i>
       <i *ngIf="cancel && !groupEdit" (click)="cancelNewGradeGroup()" class="fa fa-times white"></i>
+
+      <i *ngIf="!groupEdit" (click)="newGradeGroup()" class="fa fa-plus white"></i>
 
       <i *ngIf="cancel && canConfirmNewGroups" (click)="confirmNewGradeGroup()" class="fa fa-check white"></i>
       <i *ngIf="groupEdit && canConfirmNewGroups" (click)="confirmNewGradeGroup()" class="fa fa-check white"></i>
@@ -51,6 +51,7 @@
                     (weight)="changeWeights()"
                     (deleteGroup)="deleteGroup($event)"
                     (editGroup)="editGroup()"
+                    (name)="receiveName()"
                     [group]="group.group"
                     [edit]="group.edit"
                     id="{{group.id}}"></gt-grade-group>
