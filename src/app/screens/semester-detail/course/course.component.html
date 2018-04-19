@@ -11,7 +11,7 @@
     <div *ngIf="!edit" class="col-1">{{ courseObj.hours }}</div>
     <div *ngIf="edit" class="col-1"><input type="number" min="1" [(ngModel)]="courseObj.hours"></div>
 
-    <span *ngIf="!edit" class="buttons">
+    <span *ngIf="!edit && allowButtons" class="buttons">
       <i (click)="beginEdit()" class="fa fa-pencil"></i>
       <i (click)="delete()" class="fa fa-trash"></i>
       <i *ngIf="!isExpanded" (click)="isExpanded = true" class="fa fa-chevron-down"></i>

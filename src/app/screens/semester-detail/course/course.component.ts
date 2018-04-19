@@ -21,6 +21,7 @@ export class CourseComponent implements OnInit {
   groupEdit = false;
   edit: boolean = false;
   canConfirmNewGroups = false;
+  allowButtons = true;
   @ViewChild(GradeScaleComponent) scaleComp: GradeScaleComponent;
   @ViewChildren(GradeGroupComponent) components: QueryList<GradeGroupComponent>;
   @Output('save') save = new EventEmitter();

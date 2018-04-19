@@ -56,11 +56,18 @@ export class SemesterDetailComponent {
     this.courseBeingEditted = true;
     this.courseToEditIndex = this.semester.courses.indexOf(courseToEdit);
     this.courseToEdit = new Course(courseToEdit);
+    this.components.toArray().forEach((comp) => {
+      if (comp.courseObj != courseToEdit) {
+        comp.isExpanded = false;
+        comp.allowButtons = false;
+      }
+    });
   }
 
   editComplete() {
     if (this.courseBeingAdded) this.addCourseComplete();
     else {
+      this.allowButtons();
       let newCourse = this.components.toArray()[this.courseToEditIndex].courseObj;
       newCourse.gradeScale = this.components.toArray()[this.courseToEditIndex].getScale();
       this.semester.courses[this.courseToEditIndex] = newCourse;
@@ -68,17 +75,23 @@ export class SemesterDetailComponent {
       this.courseToEditIndex = null;
       this.courseBeingEditted = false;
     }
-
   }
 
   cancelEdittingCourse() {
     if (this.courseBeingAdded) this.cancelAddingCourse();
     else {
+      this.allowButtons();
       this.components.toArray()[this.courseToEditIndex].courseObj = this.courseToEdit;
       this.components.toArray()[this.courseToEditIndex].edit = false;
       this.courseToEditIndex = null;
       this.courseBeingEditted = false;
     }
+  }
+
+  allowButtons() {
+    this.components.toArray().forEach((comp) => {
+      comp.allowButtons = true;
+    });
   }
 
   get canSaveEdittedCourse() {
@@ -114,16 +127,24 @@ export class SemesterDetailComponent {
     setTimeout(() => {
       this.components.toArray()[0].edit = true;
     },1);
+    this.components.toArray().forEach((comp) => {
+      if (comp.courseObj != this.semester.courses[0]) {
+        comp.allowButtons = false;
+        comp.isExpanded = false;
+      }
+    });
   }
 
   cancelAddingCourse() {
     this.semester.courses.splice(0,1);
     this.courseBeingAdded = false;
+    this.allowButtons();
   }
 
   addCourseComplete() {
     this.semester.courses[0] = this.components.toArray()[0].courseObj;
     this.courseBeingAdded = false;
+    this.allowButtons();
     this.saveSemester();
   }
 
