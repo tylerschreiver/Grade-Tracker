@@ -25,6 +25,7 @@ export class Course {
         let totalPossible = 0;
         this.gradeGroups.forEach((group: GradeGroup) => {
             totalPoints += group.pointsTowardsTotal();
+            if (group.numGrades > 0)
             totalPossible += group.weight;
         });
         return totalPoints/totalPossible;
