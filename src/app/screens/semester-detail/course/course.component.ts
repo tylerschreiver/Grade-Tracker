@@ -24,6 +24,7 @@ export class CourseComponent implements OnInit {
   canConfirmNewGroups = false;
   allowButtons = true;
   weightChangeStarted = false;
+  allowAverage = true;
   numNewGroups = 0;
   @ViewChild(GradeScaleComponent) scaleComp: GradeScaleComponent;
   @ViewChildren(GradeGroupComponent) components: QueryList<GradeGroupComponent>;
@@ -39,8 +40,10 @@ export class CourseComponent implements OnInit {
   @Input() set course(course: Course) {
     this.courseObj = course;
     let i = 0;
+    this.allowAverage = false;
     course.gradeGroups.forEach((group) => {
       this.gradeGroups.push({"group": group, "edit":false, "id": i});
+      if (group.grades.length != 0) this.allowAverage = true;
       i++;
     });
   }

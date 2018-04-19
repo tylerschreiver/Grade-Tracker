@@ -25,17 +25,9 @@ export class Course {
         let totalPossible = 0;
         this.gradeGroups.forEach((group: GradeGroup) => {
             totalPoints += group.pointsTowardsTotal();
-            if (group.numGrades > 0)
+            if (group.grades.length > 0)
             totalPossible += group.weight;
         });
         return totalPoints/totalPossible;
-    }
-
-    get hasAverage() {
-        let hasAvg = false;
-        this.gradeGroups.forEach((group) => {
-            if (group.numGrades > 0) hasAvg = true;
-        });
-        return hasAvg;
     }
 }

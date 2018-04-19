@@ -2,7 +2,7 @@
   <div class="col-3 spacer">{{ groupObj.name }}</div>
   <div class="col-2">{{ groupObj.weight }}</div>
   <div class="col-1"></div>
-  <span *ngIf="groupObj.numGrades">
+  <span *ngIf="gradeObjs.length">
     <div class="col-2">{{ groupObj.average()*100 | number:'.1-3' }}%</div>
   </span>
   <span class="buttons">
@@ -38,7 +38,7 @@
           {{groupForm.controls['name'].value}}
         </div>
       <div *ngIf="nameComplete" class="col-2">
-        <input (keyup)="change.emit();" max="100" min="0" formControlName="weight" type="number">
+        <input (keyup)="change.emit();" max="100" min=0 formControlName="weight" type="number">
       </div>
       <span *ngIf="!nameComplete && parentalPermission" class="right-button"><button (click)="adjustWeights()" [disabled]="!groupForm.controls['name'].valid || tempDisable" class="btn">Next</button></span>
     </div>
