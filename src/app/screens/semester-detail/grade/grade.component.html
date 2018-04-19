@@ -11,9 +11,9 @@
   <form [formGroup]="gradeForm">
     <div class="form-group">
         <div class="col-3 spacer"><input formControlName="name"></div>
-        <div class="col-2"><input type="number" formControlName="pointsEarned"></div>
+        <div class="col-2"><input type="number" min="0" formControlName="pointsEarned"></div>
         <div class="col-1"></div>
-        <div class="col-2"><input type="number" formControlName="totalPoints"></div>
+        <div class="col-2"><input type="number" min="1" formControlName="totalPoints"></div>
         <span class="right-button"><button (click)="addGrade()" [disabled]="!gradeForm.valid" class="btn">Confirm</button></span>
     </div>
   </form>
