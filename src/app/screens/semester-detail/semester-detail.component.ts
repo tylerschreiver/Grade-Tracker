@@ -72,6 +72,7 @@ export class SemesterDetailComponent {
       newCourse.gradeScale = this.components.toArray()[this.courseToEditIndex].getScale();
       this.semester.courses[this.courseToEditIndex] = newCourse;
       this.saveSemester();
+      this.components.toArray()[this.courseToEditIndex].edit = false;
       this.courseToEditIndex = null;
       this.courseBeingEditted = false;
     }
