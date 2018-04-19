@@ -43,8 +43,15 @@ export class CreateSemesterComponent implements OnInit {
       scaleType: ['', Validators.required],
       gradeScale: ['', Validators.required],
       gradeGroups: ['', Validators.required]
-    })
+    });
+
     for(let i = 2014; i < 2035; i++) { this.yearsAvailable.push(i); }
+
+    auth.getUserDetails().subscribe((detail) => {
+      grade.getSemesters(detail.uid).subscribe((data) => {
+        this.nextId = data[data.length-1].id + 1;
+      });
+    });
   }
 
   ngOnInit() {

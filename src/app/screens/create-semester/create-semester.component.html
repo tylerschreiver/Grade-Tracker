@@ -59,11 +59,7 @@
         </div>
         <button (click)="saveCourse(courseObject)" *ngIf="isScaleDone && areGroupsDone && newCourseForm.valid" class="btn">Save Course</button>
       </div>
-
-
     </form>
-
-
   </div>
   <button [disabled]="isSaving" *ngIf="semesterForm.valid" (click)="saveSemester()" class="btn">Save Semester</button>
 </div>
