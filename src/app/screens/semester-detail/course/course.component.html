@@ -36,7 +36,7 @@
     <div class="col-2">Average Grade</div>
     <span class="right">
       <i *ngIf="groupEdit" (click)="cancelEdit()" class="fa fa-times white"></i>
-      <i *ngIf="cancel && !groupEdit" (click)="cancelNewGradeGroup()" class="fa fa-times white"></i>
+      <i *ngIf="cancel && !groupEdit && !weightChangeStarted" (click)="cancelNewGradeGroup()" class="fa fa-times white"></i>
 
       <i *ngIf="!groupEdit" (click)="newGradeGroup()" class="fa fa-plus white"></i>
 

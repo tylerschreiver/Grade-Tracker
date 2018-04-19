@@ -23,6 +23,7 @@ export class CourseComponent implements OnInit {
   edit: boolean = false;
   canConfirmNewGroups = false;
   allowButtons = true;
+  weightChangeStarted = false;
   numNewGroups = 0;
   @ViewChild(GradeScaleComponent) scaleComp: GradeScaleComponent;
   @ViewChildren(GradeGroupComponent) components: QueryList<GradeGroupComponent>;
@@ -79,17 +80,21 @@ export class CourseComponent implements OnInit {
 
   cancelNewGradeGroup() {
     this.cancel = false;
-    this.numNewGroups = 0;
-    this.gradeGroups = this.gradeGroups.slice(1, this.gradeGroups.length);
+    this.gradeGroups = this.gradeGroups.slice(this.numNewGroups, this.gradeGroups.length);
     this.gradeGroups.forEach((group) => {
       group.id = group.id - 1;
     });
+    this.numNewGroups = 0;
     this.components.toArray().forEach((comp) => {
       comp.stopWeightChange();
-    })
+    });
+    this.weightChangeStarted = false;
   }
 
   changeWeights() {
+    setTimeout(() => {
+      this.weightChangeStarted = true;
+    },0)
     this.components.toArray().forEach((comp) => {
       comp.startWeightChange();
     });
@@ -141,6 +146,7 @@ export class CourseComponent implements OnInit {
     this.gradeGroups.forEach((gradegroup) => {
       this.courseObj.gradeGroups.push(new GradeGroup(gradegroup.grade));
     });
+    this.weightChangeStarted = false;
     this.save.emit(this.courseObj);
   }
 
