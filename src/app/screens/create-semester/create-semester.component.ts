@@ -49,7 +49,8 @@ export class CreateSemesterComponent implements OnInit {
 
     auth.getUserDetails().subscribe((detail) => {
       grade.getSemesters(detail.uid).subscribe((data) => {
-        this.nextId = data[data.length-1].id + 1;
+        if (data.length) this.nextId = data[data.length-1].id + 1;
+        else this.nextId = 0;
       });
     });
   }
