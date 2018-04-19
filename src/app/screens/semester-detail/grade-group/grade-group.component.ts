@@ -18,12 +18,15 @@ export class GradeGroupComponent implements OnInit {
   groupForm: FormGroup;
   nameComplete: boolean = false;
   oldValue: number;
+  parentalPermission = true;
+  tempDisable = false;
   @Input() edit: boolean = false;
   @Output('save') save = new EventEmitter();
   @Output('weight') weight = new EventEmitter();
   @Output('change') change = new EventEmitter();
   @Output('deleteGroup') deleteGroup = new EventEmitter();
   @Output('editGroup') editGroup = new EventEmitter();
+  @Output('name') name = new EventEmitter();
 
   constructor(public gradeReceiver: GradeReceiverService,
               public fb: FormBuilder) { 
@@ -122,6 +125,12 @@ export class GradeGroupComponent implements OnInit {
     this.groupForm.controls['name'].setValue(this.groupObj.name);
     this.groupForm.controls['weight'].setValue(this.groupObj.weight);
     this.editGroup.emit();
+  }
+
+  giveParentName() {
+    if (!this.parentalPermission) {
+
+    }
   }
 
 }

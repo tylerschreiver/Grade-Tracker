@@ -6,6 +6,7 @@ import { stripGeneratedFileSuffix } from '@angular/compiler/src/aot/util';
 import { GradeGroupComponent } from '../grade-group/grade-group.component';
 import { DecimalPipe } from '@angular/common';
 import { GradeScaleComponent } from '../../create-semester/grade-scale/grade-scale.component';
+import { SSL_OP_NO_COMPRESSION } from 'constants';
 
 @Component({
   selector: 'gt-course',
@@ -22,6 +23,9 @@ export class CourseComponent implements OnInit {
   edit: boolean = false;
   canConfirmNewGroups = false;
   allowButtons = true;
+  weightChangeStarted = false;
+  allowAverage = true;
+  numNewGroups = 0;
   @ViewChild(GradeScaleComponent) scaleComp: GradeScaleComponent;
   @ViewChildren(GradeGroupComponent) components: QueryList<GradeGroupComponent>;
   @Output('save') save = new EventEmitter();
@@ -36,8 +40,10 @@ export class CourseComponent implements OnInit {
   @Input() set course(course: Course) {
     this.courseObj = course;
     let i = 0;
+    this.allowAverage = false;
     course.gradeGroups.forEach((group) => {
       this.gradeGroups.push({"group": group, "edit":false, "id": i});
+      if (group.grades.length != 0) this.allowAverage = true;
       i++;
     });
   }
@@ -52,6 +58,7 @@ export class CourseComponent implements OnInit {
   }
 
   newGradeGroup() {
+    this.numNewGroups++;
     this.cancel = true;
     let temp = this.gradeGroups;
     this.gradeGroups = [];
@@ -61,20 +68,36 @@ export class CourseComponent implements OnInit {
       group.id = i;
       this.gradeGroups.push(group);
     });
+
+    if (this.numNewGroups > 1) {
+      setTimeout(() => {
+        let i = 0;
+        this.components.toArray().forEach((comp) => {
+          i++;
+          if (i == this.numNewGroups) comp.parentalPermission = true;
+          else comp.parentalPermission = false;
+        });
+      },1)
+    }
   }
 
   cancelNewGradeGroup() {
     this.cancel = false;
-    this.gradeGroups = this.gradeGroups.slice(1, this.gradeGroups.length);
+    this.gradeGroups = this.gradeGroups.slice(this.numNewGroups, this.gradeGroups.length);
     this.gradeGroups.forEach((group) => {
       group.id = group.id - 1;
     });
+    this.numNewGroups = 0;
     this.components.toArray().forEach((comp) => {
       comp.stopWeightChange();
-    })
+    });
+    this.weightChangeStarted = false;
   }
 
   changeWeights() {
+    setTimeout(() => {
+      this.weightChangeStarted = true;
+    },0)
     this.components.toArray().forEach((comp) => {
       comp.startWeightChange();
     });
@@ -113,6 +136,7 @@ export class CourseComponent implements OnInit {
 
 
   confirmNewGradeGroup() {
+    this.numNewGroups = 0;
     this.cancel = false;
     let i = 0;
     this.components.forEach((comp) => {
@@ -125,15 +149,16 @@ export class CourseComponent implements OnInit {
     this.gradeGroups.forEach((gradegroup) => {
       this.courseObj.gradeGroups.push(new GradeGroup(gradegroup.grade));
     });
+    this.weightChangeStarted = false;
     this.save.emit(this.courseObj);
   }
 
   deleteGroup(e) {
-    if (confirm("Are you sure you want to delete this grade group?")) {
+    if (confirm("Are you sure you want to delete " + e.name +  "?")) {
       this.cancel = true;
       let temp = [];
       this.gradeGroups.forEach((group) => {
-        if (group.group.name != e.name && group.group.weight != e.weight) {
+        if (group.group.name != e.name || group.group.weight != e.weight) {
           temp.push(group);
         }
       });
@@ -158,5 +183,13 @@ export class CourseComponent implements OnInit {
 
   delete() {
     this.deleteCourse.emit();
+  }
+
+  receiveName() {
+    let valid = true;
+    this.components.toArray().forEach((comp) => {
+      if (!comp.groupForm.controls['name'].valid) valid = false;
+    });
+    this.components.toArray()[this.numNewGroups-1].tempDisable = !valid;
   }
 }
