@@ -10,11 +10,13 @@
         <option value="Summer">Summer</option>
         <option value="Winter">Winter</option>
       </select>
+      <span class="year">
+        <label style="margin-left: 30px;">Year: </label>
+        <select formControlName="year">
+          <option *ngFor="let year of yearsAvailable" value="{{year}}">{{ year }}</option>
+        </select>
+      </span>
 
-      <label style="margin-left: 30px;">Year: </label>
-      <select formControlName="year">
-        <option *ngFor="let year of yearsAvailable" value="{{year}}">{{ year }}</option>
-      </select>
     </div>
   </form>
 
