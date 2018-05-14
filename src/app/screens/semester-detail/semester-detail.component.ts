@@ -33,6 +33,7 @@ export class SemesterDetailComponent {
     this.GradeReceiver.getSemesterById(this.uid,this.id).subscribe((data:any) => {
       if (data) this.semester = new Semester(data);
     }, error => this.errorMessage = <any> error);
+
   }
 
   saveCourse(e, originalCourse) {

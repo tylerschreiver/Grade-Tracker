@@ -7,6 +7,11 @@ export class Course {
     scaleType: scaleType; // letter: 4, plus: 8, plusMinus: 12
     gradeScale: number[]; 
     gradeGroups: GradeGroup[] = [];
+    letters = {
+        "letter": ['F', 'D', 'C', 'B', 'A'],
+        "plusMinus": ['F', 'D-', 'D', 'D+', 'C-', 'C', 'C+', 'B-', 'B', 'B+', 'A-', 'A', 'A+'],
+        "plus": ['F', 'D', 'D+', 'C', 'C+', 'B', 'B+', 'A', 'A+']        
+    }
 
     constructor(json: any) {
         if (json.name) this.name = json.name;
@@ -29,5 +34,17 @@ export class Course {
             totalPossible += group.weight;
         });
         return totalPoints/totalPossible;
+    }
+
+    letterGrade() {
+        let classGrade = this.averageInCourse() * 100;
+        let index = 0;
+        this.gradeScale.forEach((grade) => {
+            if (grade > classGrade) {
+                index = this.gradeScale.indexOf(grade);
+                classGrade = 101; // grade will never again be above classGrade
+            }
+        });
+        return this.letters[this.scaleType][index];
     }
 }

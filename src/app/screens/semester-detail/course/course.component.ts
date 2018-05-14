@@ -49,11 +49,13 @@ export class CourseComponent implements OnInit {
   }
 
   saveGroup(e, groupOriginal) {
+    e.numGrades = e.grades.length;
     this.courseObj.gradeGroups.forEach((group) => {
       if (group == groupOriginal) {
         group = e;
       }
     });
+    this.allowAverage = e.grades.length != 0;
     this.save.emit(this.courseObj);
   }
 
