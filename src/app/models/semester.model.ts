@@ -27,4 +27,15 @@ export class Semester {
         });
         return hours;
     }
+
+    get gpa() {
+        let hours: number = 0;
+        let points: number = 0;
+        this.courses.forEach((course) => {
+            hours += Number(course.hours);
+            points += course.numberGrades()*course.hours;
+        });
+        let total = points/hours;
+        return total; 
+    }
 }

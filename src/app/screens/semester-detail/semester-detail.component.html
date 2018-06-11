@@ -1,4 +1,4 @@
-<div *ngIf="semester" class="session">{{ semester.session }} {{ semester.year }}</div>
+<div *ngIf="semester" class="session">{{ semester.session }} {{ semester.year }} <span *ngIf="semester.gpa" style="margin-left:20px;">GPA: {{ semester.gpa | number:'.1-3'}} </span> </div>
 <div *ngIf="semester" class="menu">
   <div class="changes-saved">Changes have been saved</div>
   <div class="header">
